@@ -1,0 +1,45 @@
+@font-face {
+	font-family: "Maple";
+	src: url("/MapleMono-NF-Regular.ttf");
+}
+
+@font-face {
+	font-family: "Hiragino";
+	src: url("/Hiragino.ttc");
+}
+
+
+* {
+	margin: 0;
+	border: none;
+	padding: 0;
+
+	box-sizing: border-box;
+}
+
+.shadow {
+	position: relative;
+
+	border-color: black;
+	border-style: solid;
+
+	&::after {
+		content: "";
+		position: absolute;
+		left: -2+7px;
+		right: -2-7px;
+		top: 7px;
+		bottom: -2-7px;
+
+		border-color: @shadow;
+		border-style: solid;
+		border-width: inherit;
+
+		pointer-events: none;
+	}
+}
+
+a {
+	text-decoration: none;
+	color: black;
+}

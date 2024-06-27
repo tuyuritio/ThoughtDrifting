@@ -1,0 +1,137 @@
+<style lang="less">
+	#frame {
+		display: flex;
+		flex-direction: column;
+
+		height: 100vh;
+		width: 100vw;
+
+		padding: 15px;
+
+		background-color: @background;
+
+		section {
+			display: flex;
+			flex-direction: row;
+			justify-content: space-between;
+
+			h1 {
+				border-width: 0px 0px 2px 2px;
+				padding: 10px 20px;
+
+				font-family: "Hiragino";
+				font-size: 30px;
+
+				text-shadow: @text-shadow;
+			}
+
+			span {
+				border-width: 0px 2px 2px 0px;
+				padding: 10px 20px;
+
+				font-family: "Maple";
+				font-size: 30px;
+
+				a {
+					padding: 0px 10px;
+
+					text-shadow: @text-shadow;
+				}
+			}
+		}
+
+		main {
+			display: flex;
+			flex-direction: row;
+
+			flex-grow: 1;
+
+			nav {
+				display: flex;
+				flex-direction: column;
+
+				border-width: 0px 0px 0px 2px;
+				padding-top: 20px;
+
+				ul {
+					list-style: none;
+
+					li {
+						position: relative;
+
+						padding: 5px 0px 5px 40px;
+
+						&.location {
+							::before {
+								content: "";
+								position: absolute;
+
+								top: 50%;
+								left: 0px;
+
+								border-bottom: 2px solid black;
+								width: 15px;
+							}
+
+							::after {
+								content: "";
+								position: absolute;
+
+								top: calc(50% + 7px);
+								left: 7px;
+
+								border-bottom: 2px solid @shadow;
+								width: 15px;
+							}
+						}
+
+						a {
+							font-weight: bold;
+							font-size: 20px;
+
+							text-shadow: @text-shadow;
+						}
+					}
+				}
+			}
+
+			article {
+				flex-grow: 1;
+			}
+		}
+
+		footer {
+			border-width: 2px 0px 0px 2px;
+			padding: 30px 20px 10px;
+
+			font-size: 13px;
+			font-weight: bold;
+			font-family: "Maple";
+
+			text-shadow: @text-shadow;
+		}
+	}
+</style>
+
+<div id="frame">
+	<section>
+		<h1 class="shadow">五月七日千緒</h1>
+		<span class="shadow"><a target="_blank" href="https://github.com/tuyuritio"></a></span>
+	</section>
+	<main>
+		<nav class="shadow">
+			<ul>
+				<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
+				<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
+				<li class:location={$page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
+			</ul>
+		</nav>
+		<article><slot /></article>
+	</main>
+	<footer class="shadow"> 2024 TuyuriTio</footer>
+</div>
+
+<script lang="ts">
+	import { page } from "$app/stores";
+	import "./+layout.less";
+</script>
