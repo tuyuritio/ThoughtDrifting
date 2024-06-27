@@ -102,7 +102,7 @@
 				<summary><strong>{note.title}</strong><i>{Time.format(note.timestamp)}</i></summary>
 				{#each note.content as subnote}
 					<details>
-						<summary><a href="/note/{subnote.content}">{subnote.title}</a><i>{Time.format(subnote.timestamp, "date")}</i></summary>
+						<summary><a href="/note/{subnote.content}">{subnote.title}</a><i>{Time.format(subnote.timestamp)}</i></summary>
 					</details>
 				{/each}
 			{/if}
@@ -112,6 +112,9 @@
 
 <script lang="ts">
 	import Time from "$lib/time";
+	import type { PageData } from "./$types";
+
+	export let data: PageData;
 
 	type Note = {
 		title: string;
@@ -119,5 +122,5 @@
 		content: string | Note[];
 	};
 
-	let notes: Note[] = [];
+	let notes: Note[] = data.notes;
 </script>
