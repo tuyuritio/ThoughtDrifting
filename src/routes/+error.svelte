@@ -4,15 +4,17 @@
 		flex-direction: column;
 		align-items: center;
 		justify-content: center;
-		height: 50%;
-	}
 
-	h2 {
-		font-size: 25px;
-	}
+		flex-grow: 1;
+		height: 60%;
 
-	h3 {
-		font-size: 20px;
+		h2 {
+			font-size: 25px;
+		}
+
+		h3 {
+			font-size: 20px;
+		}
 	}
 </style>
 

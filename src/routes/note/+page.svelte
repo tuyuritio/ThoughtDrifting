@@ -1,23 +1,15 @@
 <style lang="less">
 	main {
-		margin: 15px 0px 0px 100px;
-
-		p {
+		section {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
 
 			margin-bottom: 15px;
 
-			span {
-				font-size: 30px;
-				font-family: "maple";
-			}
-
 			input {
 				margin-left: 35px;
 				border-bottom: 2px dashed @foreground;
-				padding: 5px 0px;
 
 				width: 300px;
 
@@ -93,7 +85,10 @@
 </style>
 
 <main>
-	<p><span></span><input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" /></p>
+	<section>
+		<span><Icon name="search" size={20} /></span>
+		<input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" />
+	</section>
 	{#each notes as note}
 		<details>
 			{#if typeof note.content == "string"}
@@ -111,6 +106,7 @@
 </main>
 
 <script lang="ts">
+	import Icon from "$lib/icon.svelte";
 	import Time from "$lib/time";
 	import type { PageData } from "./$types";
 

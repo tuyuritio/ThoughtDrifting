@@ -6,6 +6,7 @@ export const load: PageServerLoad = async () => {
 
 	let notes = [];
 	let series: any = {};
+
 	for (let hash in meta) {
 		let note = meta[hash];
 
@@ -21,26 +22,3 @@ export const load: PageServerLoad = async () => {
 
 	return { notes };
 };
-
-/* 
-{
-	"hash-1": {
-		"title": "n1",
-		"timestamp": 0,
-		"tags": [],
-		"series": null
-	},
-	"hash-2": {
-		"title": "s1",
-		"timestamp": 0,
-		"tags": null,
-		"series": true
-	},
-	"hash-3": {
-		"title": "n2",
-		"timestamp": 0,
-		"tags": [],
-		"series": "hash-2"
-	}
-}
-*/

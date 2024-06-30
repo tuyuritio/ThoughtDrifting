@@ -8,13 +8,23 @@
 	src: url("/Hiragino.ttc");
 }
 
-
 * {
 	margin: 0;
 	border: none;
 	padding: 0;
 
 	box-sizing: border-box;
+
+	::-webkit-scrollbar {
+		background-color: transparent;
+		width: 2px;
+		height: 2px;
+
+		&-thumb {
+			border-radius: 2px;
+			background-color: @foreground;
+		}
+	}
 }
 
 .shadow {
@@ -26,9 +36,10 @@
 	&::after {
 		content: "";
 		position: absolute;
+
 		left: -2+7px;
 		right: -2-7px;
-		top: 7px;
+		top: -2+7px;
 		bottom: -2-7px;
 
 		border-color: @shadow;
@@ -36,6 +47,8 @@
 		border-width: inherit;
 
 		pointer-events: none;
+
+		z-index: -1;
 	}
 }
 

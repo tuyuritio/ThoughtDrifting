@@ -3,12 +3,16 @@
 		display: flex;
 		flex-direction: column;
 
+		position: relative;
+
 		height: 100vh;
 		width: 100vw;
 
 		padding: 15px;
 
 		background-color: @background;
+
+		z-index: 0;
 
 		section {
 			display: flex;
@@ -17,7 +21,7 @@
 
 			h1 {
 				border-width: 0px 0px 2px 2px;
-				padding: 10px 20px;
+				padding: 10px 20px 15px;
 
 				font-family: "Hiragino";
 				font-size: 30px;
@@ -46,11 +50,12 @@
 
 			flex-grow: 1;
 
+			border-width: 0px 0px 0px 2px;
+
 			nav {
 				display: flex;
 				flex-direction: column;
 
-				border-width: 0px 0px 0px 2px;
 				padding-top: 20px;
 
 				ul {
@@ -89,6 +94,7 @@
 							font-weight: bold;
 							font-size: 20px;
 
+							white-space: nowrap;
 							text-shadow: @text-shadow;
 						}
 					}
@@ -97,12 +103,15 @@
 
 			article {
 				flex-grow: 1;
+				width: 0px;
+
+				margin: 20px 50px;
 			}
 		}
 
 		footer {
 			border-width: 2px 0px 0px 2px;
-			padding: 30px 20px 10px;
+			padding: 20px 20px 10px;
 
 			font-size: 13px;
 			font-weight: bold;
@@ -118,8 +127,8 @@
 		<h1 class="shadow">五月七日千緒</h1>
 		<span class="shadow"><a target="_blank" href="https://github.com/tuyuritio"></a></span>
 	</section>
-	<main>
-		<nav class="shadow">
+	<main class="shadow">
+		<nav>
 			<ul>
 				<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
 				<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
