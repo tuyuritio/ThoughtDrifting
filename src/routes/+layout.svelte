@@ -11,6 +11,7 @@
 		padding: 15px;
 
 		background-color: @background;
+		background-image: url("/paper.png");
 
 		z-index: 0;
 
