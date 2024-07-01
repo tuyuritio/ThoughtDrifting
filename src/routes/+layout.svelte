@@ -37,65 +37,65 @@
 				font-size: 30px;
 
 				a {
-					padding: 0px 10px;
+					padding: 0px 5px;
 
 					text-shadow: @text-shadow;
 				}
 			}
 		}
 
-		main {
-			display: flex;
-			flex-direction: row;
-
+		div {
 			flex-grow: 1;
-
 			border-width: 0px 0px 0px 2px;
 
-			nav {
+			main {
 				display: flex;
-				flex-direction: column;
+				flex-direction: row;
 
-				padding-top: 20px;
+				width: 100%;
+				max-width: 1500px;
 
-				ul {
-					list-style: none;
+				margin: 50px auto 20px;
 
-					li {
-						position: relative;
+				nav {
+					ul {
+						list-style: none;
+						border-width: 0px 2px 0px 0px;
+						padding-right: 40px;
+						padding-bottom: 50px;
 
-						padding: 5px 0px 5px 40px;
+						li {
+							position: relative;
 
-						&.location {
-							::before {
-								content: "";
-								position: absolute;
+							padding: 5px 0px 5px 40px;
 
-								top: 50%;
-								left: 0px;
+							&.location {
+								::before {
+									content: "";
+									position: absolute;
 
-								border-bottom: 2px solid black;
-								width: 15px;
+									top: 50%;
+									left: 0px;
+
+									border-bottom: 2px solid black;
+									width: 15px;
+								}
+
+								::after {
+									content: "";
+									position: absolute;
+
+									top: calc(50% + 7px);
+									left: 7px;
+
+									border-bottom: 2px solid @shadow;
+									width: 15px;
+								}
 							}
 
-							::after {
-								content: "";
-								position: absolute;
-
-								top: calc(50% + 7px);
-								left: 7px;
-
-								border-bottom: 2px solid @shadow;
-								width: 15px;
+							a {
+								font-size: 20px;
 							}
-						}
-
-						a {
-							font-weight: bold;
-							font-size: 20px;
-
-							white-space: nowrap;
-							text-shadow: @text-shadow;
 						}
 					}
 				}
@@ -105,7 +105,7 @@
 				flex-grow: 1;
 				width: 0px;
 
-				margin: 20px 50px;
+				margin: 0px 50px;
 			}
 		}
 
@@ -115,9 +115,10 @@
 
 			font-size: 13px;
 			font-weight: bold;
-			font-family: "Maple";
+			font-family: "Maple Nerd";
 
 			text-shadow: @text-shadow;
+			vertical-align: bottom;
 		}
 	}
 </style>
@@ -125,22 +126,28 @@
 <div id="frame">
 	<section>
 		<h1 class="shadow">五月七日千緒</h1>
-		<span class="shadow"><a target="_blank" href="https://github.com/tuyuritio"></a></span>
+		<span class="shadow">
+			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
+			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
+		</span>
 	</section>
-	<main class="shadow">
-		<nav>
-			<ul>
-				<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
-				<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
-				<li class:location={$page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
-			</ul>
-		</nav>
-		<article><slot /></article>
-	</main>
-	<footer class="shadow"> 2024 TuyuriTio</footer>
+	<div class="shadow">
+		<main>
+			<nav>
+				<ul class="shadow">
+					<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
+					<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
+					<li class:location={$page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
+				</ul>
+			</nav>
+			<article><slot /></article>
+		</main>
+	</div>
+	<footer class="shadow">&emsp;2024 TuyuriTio</footer>
 </div>
 
 <script lang="ts">
 	import { page } from "$app/stores";
+	import Icon from "$lib/icon.svelte";
 	import "./+layout.less";
 </script>

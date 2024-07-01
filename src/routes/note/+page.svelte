@@ -23,7 +23,7 @@
 		details {
 			position: relative;
 
-			margin-left: 10px;
+			margin-left: 15px;
 			border-left: 2px solid @foreground;
 
 			&:last-child {
