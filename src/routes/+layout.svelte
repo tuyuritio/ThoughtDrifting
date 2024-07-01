@@ -20,9 +20,18 @@
 			flex-direction: row;
 			justify-content: space-between;
 
+			height: 60px;
+
+			> * {
+				display: flex;
+				align-items: center;
+
+				height: 100%;
+				padding: 0px 20px;
+			}
+
 			h1 {
 				border-width: 0px 0px 2px 2px;
-				padding: 10px 20px 15px;
 
 				font-family: "Hiragino";
 				font-size: 30px;
@@ -33,15 +42,9 @@
 
 			span {
 				border-width: 0px 2px 2px 0px;
-				padding: 10px 20px;
-
-				font-family: "Maple";
-				font-size: 30px;
 
 				a {
 					padding: 0px 5px;
-
-					text-shadow: @text-shadow;
 				}
 			}
 		}
@@ -103,13 +106,13 @@
 						}
 					}
 				}
-			}
 
-			article {
-				flex-grow: 1;
-				width: 0px;
+				article {
+					flex-grow: 1;
+					width: 0px;
 
-				margin: 0px 50px;
+					margin: 0px 50px;
+				}
 			}
 		}
 
@@ -122,7 +125,6 @@
 			font-family: "Maple";
 
 			text-shadow: @text-shadow;
-			vertical-align: bottom;
 		}
 	}
 </style>

@@ -10,6 +10,7 @@
 			input {
 				margin-left: 35px;
 				border-bottom: 2px dashed @foreground;
+				padding: 5px 0px;
 
 				width: 300px;
 
