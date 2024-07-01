@@ -26,6 +26,7 @@
 
 				font-family: "Hiragino";
 				font-size: 30px;
+				font-weight: 100;
 
 				text-shadow: @text-shadow;
 			}
@@ -96,6 +97,8 @@
 
 							a {
 								font-size: 20px;
+
+								text-shadow: @text-shadow;
 							}
 						}
 					}
@@ -116,7 +119,7 @@
 
 			font-size: 13px;
 			font-weight: bold;
-			font-family: "Maple Nerd";
+			font-family: "Maple";
 
 			text-shadow: @text-shadow;
 			vertical-align: bottom;
