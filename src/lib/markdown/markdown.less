@@ -40,14 +40,17 @@
 	}
 
 	h2 {
+		align-self: flex-start;
+
 		margin-bottom: 20px;
 		border-width: 0px 0px 2px 0px;
 		padding-bottom: 10px;
+		padding-right: 20px;
 	}
 
 	hr {
-		margin: 10px 0;
-		border-bottom: 2px solid @foreground;
+		margin-bottom: 15px;
+		border-bottom: 1px dashed @remark;
 	}
 
 	p {
@@ -106,12 +109,12 @@
 		background-color: @block;
 
 		font-size: 0.8em;
-		user-select: text;
 		-webkit-user-drag: none;
 
 		&,
 		span {
 			font-family: @monospace;
+			user-select: text;
 		}
 	}
 
@@ -128,6 +131,10 @@
 
 	mark {
 		background-color: @shadow;
+	}
+
+	img {
+		max-width: 100%;
 	}
 
 	table {
