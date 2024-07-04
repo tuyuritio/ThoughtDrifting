@@ -20,6 +20,8 @@
 			margin: 0px 20px;
 			max-width: 250px;
 
+			overflow-y: auto;
+
 			h3 {
 				margin-bottom: 10px;
 			}
@@ -36,7 +38,7 @@
 	{#if data.contents}
 		<aside>
 			<h3>目次</h3>
-			<q bind:this={content} class="markdown">{@html data.contents}</q>
+			<q bind:this={content}>{@html data.contents}</q>
 		</aside>
 	{/if}
 </main>

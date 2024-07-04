@@ -17,7 +17,7 @@
 				background: transparent;
 				outline: none;
 
-				font-family: "maple";
+				font-family: @monospace;
 			}
 		}
 
@@ -71,7 +71,7 @@
 					display: block;
 					margin-top: 5px;
 
-					font-family: "maple";
+					font-family: @monostyle;
 					font-size: 10px;
 					font-style: normal;
 					color: @remark;

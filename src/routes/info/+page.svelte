@@ -59,7 +59,7 @@
 				span {
 					position: absolute;
 
-					font-family: "PT Mono";
+					font-family: @monospace;
 
 					top: -18px;
 					left: 20px;

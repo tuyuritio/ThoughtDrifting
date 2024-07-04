@@ -18,6 +18,10 @@
 	font-family: "Noto Serif SC";
 	user-select: none;
 
+	::selection {
+		background-color: @selection;
+	}
+
 	::-webkit-scrollbar {
 		background-color: transparent;
 		width: 2px;
@@ -58,4 +62,14 @@
 a {
 	text-decoration: none;
 	color: black;
+
+	-webkit-user-drag: none;
+}
+
+img {
+	-webkit-user-drag: none;
+}
+
+.katex * {
+	font-family: "Katex_MAIN";
 }

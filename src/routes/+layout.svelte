@@ -126,7 +126,7 @@
 			span {
 				font-size: 13px;
 				font-weight: bold;
-				font-family: "Maple";
+				font-family: @monostyle;
 
 				text-shadow: @text-shadow;
 			}
@@ -162,5 +162,5 @@
 <script lang="ts">
 	import { page } from "$app/stores";
 	import Icon from "$lib/icon.svelte";
-	import "./+layout.less";
+	import "$lib/style.less";
 </script>
