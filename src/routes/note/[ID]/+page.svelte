@@ -9,17 +9,36 @@
 
 		margin: 0px auto;
 
-		q {
+		div {
 			flex-grow: 1;
+			padding: 0px 10px;
 
-			quotes: none;
 			overflow-y: auto;
+		}
+
+		aside {
+			margin: 0px 20px;
+			max-width: 250px;
+
+			h3 {
+				margin-bottom: 10px;
+			}
+
+			q {
+				quotes: none;
+			}
 		}
 	}
 </style>
 
 <main>
-	<q><Markdown>{@html data.content}</Markdown></q>
+	<div bind:this={container}><Markdown>{@html data.content}</Markdown></div>
+	{#if data.contents}
+		<aside>
+			<h3>目次</h3>
+			<q bind:this={content} class="markdown">{@html data.contents}</q>
+		</aside>
+	{/if}
 </main>
 
 <script lang="ts">
@@ -27,4 +46,7 @@
 	import type { PageData } from "./$types";
 
 	export let data: PageData;
+
+	let container: HTMLDivElement;
+	let content: HTMLQuoteElement;
 </script>

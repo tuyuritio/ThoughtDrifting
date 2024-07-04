@@ -1,11 +1,10 @@
 import Path from "path";
 import FileSystem from "fs";
 import { error } from "@sveltejs/kit";
-import { render } from "$lib/server/markdown";
 import type { PageServerLoad } from "./$types";
 
-const note_path = "assets/note";
-const meta_path = Path.join(note_path, "note-meta.json");
+const html_path = "assets/note";
+const meta_path = Path.join(html_path, "note-meta.json");
 
 export const load: PageServerLoad = async ({ params }) => {
 	let meta = JSON.parse(FileSystem.readFileSync(meta_path).toString());
@@ -15,11 +14,14 @@ export const load: PageServerLoad = async ({ params }) => {
 		let note;
 
 		try {
-			let markdown = FileSystem.readFileSync(Path.join(note_path, `${ID}.md`)).toString();
+			let html = FileSystem.readFileSync(Path.join(html_path, `${ID}.html`)).toString();
+			let contents = html.match(/<nav class="table-of-contents">.*<\/nav>/m)?.[0];
+			if (contents) html = html.replace(contents, "");
 
 			note = {
 				ID: params.ID,
-				content: render(markdown),
+				contents,
+				content: html,
 				...meta[ID]
 			};
 		} catch (_) {

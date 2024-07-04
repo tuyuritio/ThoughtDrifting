@@ -117,14 +117,19 @@
 		}
 
 		footer {
+			display: flex;
+			align-items: center;
+
 			border-width: 2px 0px 0px 2px;
 			padding: 20px 20px 10px;
 
-			font-size: 13px;
-			font-weight: bold;
-			font-family: "Maple";
+			span {
+				font-size: 13px;
+				font-weight: bold;
+				font-family: "Maple";
 
-			text-shadow: @text-shadow;
+				text-shadow: @text-shadow;
+			}
 		}
 	}
 </style>
@@ -149,7 +154,9 @@
 			<article><slot /></article>
 		</main>
 	</div>
-	<footer class="shadow">&emsp;2024 TuyuriTio</footer>
+	<footer class="shadow">
+		<span>&emsp;2024 TuyuriTio</span>
+	</footer>
 </div>
 
 <script lang="ts">
