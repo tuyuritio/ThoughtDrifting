@@ -90,7 +90,7 @@
 		<span><Icon name="search" size={20} /></span>
 		<input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" />
 	</section>
-	{#each notes as note}
+	{#each notes.reverse() as note}
 		<details>
 			{#if typeof note.content == "string"}
 				<summary><a href="/note/{note.content}">{note.title}</a><i>{Time.format(note.timestamp)}</i></summary>
