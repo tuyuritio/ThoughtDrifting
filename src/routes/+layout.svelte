@@ -33,7 +33,8 @@
 			h1 {
 				border-width: 0px 0px 2px 2px;
 
-				font-family: "Hiragino";
+				// font-family: "Hiragino";
+				font-family: "Hiragino Gyosyo W4 JIS2004";
 				font-size: 30px;
 				font-weight: 100;
 
