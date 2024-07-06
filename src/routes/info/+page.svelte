@@ -83,7 +83,7 @@
 			<li>
 				<span>{day.date}</span>
 				<ul>
-					{#each day.event as event}
+					{#each day.content as event}
 						<li>{event}</li>
 					{/each}
 				</ul>
