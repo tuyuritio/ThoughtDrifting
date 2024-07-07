@@ -179,6 +179,8 @@
 					padding-right: 10px;
 
 					font-family: @monostyle;
+					font-size: 15px;
+					font-weight: lighter;
 				}
 			}
 		}
@@ -221,7 +223,7 @@
 			</a>
 		</cite>
 		<code>
-			<p>Powered By</p>
+			<p>Powered by</p>
 			<a href="https://kit.svelte.dev/" target="_blank"></a>
 		</code>
 	</footer>
