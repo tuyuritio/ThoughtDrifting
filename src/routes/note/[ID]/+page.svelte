@@ -11,7 +11,7 @@
 
 		div {
 			flex-grow: 1;
-			padding: 0px 10px;
+			padding: 0px 15px;
 
 			overflow-y: auto;
 		}

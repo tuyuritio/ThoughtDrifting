@@ -1,75 +1,90 @@
 <style lang="less">
 	main {
 		display: flex;
+		flex-direction: row;
 
-		> ul {
-			margin: 35px 10px;
+		flex-grow: 1;
+		height: 100%;
 
-			list-style: none;
+		aside {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
 
-			> li {
-				position: relative;
+			height: 100%;
+			margin-left: auto;
 
-				margin: 15px 0px;
-				border-left: 2px solid @foreground;
-				padding-left: 10px;
+			> ul {
+				// margin-top: 35px;
 
-				&::before {
-					content: "";
-					position: absolute;
+				list-style: none;
 
-					top: -16px;
-					left: -9.5px;
+				> li {
+					position: relative;
 
-					width: 13px;
-					height: 13px;
+					margin: 15px 0px;
+					border-left: 2px solid @foreground;
+					padding-left: 10px;
 
-					border: 2px solid @foreground;
-					border-radius: 50%;
-				}
+					&::before {
+						content: "";
+						position: absolute;
 
-				&:first-child::after {
-					content: "";
-					position: absolute;
+						top: -16px;
+						left: -9.5px;
 
-					top: -50px;
-					left: -2px;
+						width: 13px;
+						height: 13px;
 
-					height: 35px;
+						border: 2px solid @foreground;
+						border-radius: 50%;
+					}
 
-					border-left: 2px dashed @foreground;
-				}
+					&:first-child::after {
+						content: "";
+						position: absolute;
 
-				&:last-child ul li:last-child::after {
-					content: "";
-					position: absolute;
+						top: -50px;
+						left: -2px;
 
-					top: 30px;
-					left: -49.5px;
+						height: 35px;
 
-					width: 13px;
-					height: 13px;
+						border-left: 2px dashed @foreground;
+					}
 
-					border: 2px solid @foreground;
-					border-radius: 50%;
+					&:last-child ul li:last-child::after {
+						content: "";
+						position: absolute;
 
-					background-color: @foreground;
-				}
+						top: 30px;
+						left: -49.5px;
 
-				span {
-					position: absolute;
+						width: 13px;
+						height: 13px;
 
-					font-family: @monospace;
+						border: 2px solid @foreground;
+						border-radius: 50%;
 
-					top: -18px;
-					left: 20px;
-				}
+						background-color: @foreground;
+					}
 
-				ul {
-					padding: 10px 30px 20px;
+					span {
+						position: absolute;
 
-					li {
-						position: relative;
+						font-family: @monospace;
+
+						top: -15.5px;
+						left: 20px;
+					}
+
+					ul {
+						padding: 10px 30px 20px;
+
+						li {
+							position: relative;
+
+							margin-bottom: 10px;
+						}
 					}
 				}
 			}
@@ -78,18 +93,20 @@
 </style>
 
 <main>
-	<ul>
-		{#each data.chronicle as day}
-			<li>
-				<span>{day.date}</span>
-				<ul>
-					{#each day.content as event}
-						<li>{event}</li>
-					{/each}
-				</ul>
-			</li>
-		{/each}
-	</ul>
+	<aside>
+		<ul>
+			{#each data.chronicle as day}
+				<li>
+					<span>{day.date}</span>
+					<ul>
+						{#each day.content as event}
+							<li>{event}</li>
+						{/each}
+					</ul>
+				</li>
+			{/each}
+		</ul>
+	</aside>
 </main>
 
 <script lang="ts">

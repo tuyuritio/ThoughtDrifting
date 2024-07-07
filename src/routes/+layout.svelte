@@ -15,7 +15,7 @@
 
 		z-index: 0;
 
-		section {
+		header {
 			display: flex;
 			flex-direction: row;
 			justify-content: space-between;
@@ -27,11 +27,11 @@
 				align-items: center;
 
 				height: 100%;
-				padding: 0px 20px;
 			}
 
 			h1 {
 				border-width: 0px 0px 2px 2px;
+				padding: 0px 20px 0px 15px;
 
 				font-family: "Hiragino Gyosyo W4 JIS2004";
 				font-size: 30px;
@@ -40,25 +40,29 @@
 				text-shadow: @text-shadow;
 			}
 
-			span {
+			address {
 				border-width: 0px 2px 2px 0px;
+				padding: 0px 15px;
 
 				a {
-					padding: 0px 5px;
+					margin: 0px 10px;
 				}
 			}
 		}
 
-		div {
+		main {
+			display: flex;
+
 			flex-grow: 1;
 			border-width: 0px 0px 0px 2px;
 
-			main {
+			#main {
 				display: flex;
 				flex-direction: row;
 
 				width: 100%;
 				max-width: 1500px;
+				flex-grow: 1;
 
 				margin: 50px auto 20px;
 
@@ -72,7 +76,7 @@
 						li {
 							position: relative;
 
-							padding: 5px 0px 5px 40px;
+							padding: 10px 0px 10px 40px;
 
 							&.location {
 								::before {
@@ -119,31 +123,80 @@
 		footer {
 			display: flex;
 			align-items: center;
+			justify-content: space-between;
+
+			height: 40px;
 
 			border-width: 2px 0px 0px 2px;
-			padding: 20px 20px 10px;
+			padding-top: 10px;
 
-			span {
-				font-size: 13px;
-				font-weight: bold;
+			font-size: 13px;
+			font-weight: bold;
+			text-shadow: @text-shadow;
+
+			* {
 				font-family: @monostyle;
+			}
 
-				text-shadow: @text-shadow;
+			cite {
+				display: flex;
+				align-items: center;
+
+				margin-left: 20px;
+
+				font-style: normal;
+
+				> * {
+					margin-right: 5px;
+				}
+
+				a {
+					display: flex;
+					align-items: center;
+
+					img {
+						width: 15px;
+
+						margin-right: 5px;
+						border-radius: 50%;
+						box-shadow: @text-shadow;
+					}
+				}
+			}
+
+			code {
+				display: flex;
+				align-items: center;
+
+				> * {
+					margin-right: 8px;
+				}
+
+				a {
+					display: flex;
+					align-items: center;
+
+					padding-right: 10px;
+
+					font-family: @monostyle;
+				}
 			}
 		}
 	}
 </style>
 
 <div id="frame">
-	<section>
+	<header>
 		<h1 class="shadow">五月七日千緒</h1>
-		<span class="shadow">
+		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
-		</span>
-	</section>
-	<div class="shadow">
-		<main>
+		</address>
+	</header>
+
+	<!-- 提供左边框 -->
+	<main class="shadow">
+		<div id="main">
 			<nav>
 				<ul class="shadow">
 					<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
@@ -152,10 +205,25 @@
 				</ul>
 			</nav>
 			<article><slot /></article>
-		</main>
-	</div>
+		</div>
+	</main>
+
 	<footer class="shadow">
-		<span>&emsp;2024 TuyuriTio</span>
+		<cite>
+			<span>&emsp;2024</span>
+			<a target="_blank" href="https://blog.tuur.cc">TuyuriTio</a>
+			<span> | </span>
+			<a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">
+				<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="CC" />
+				<img src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt="BY" />
+				<img src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt="NC" />
+				<img src="https://mirrors.creativecommons.org/presskit/icons/nd.svg?ref=chooser-v1" alt="ND" />
+			</a>
+		</cite>
+		<code>
+			<p>Powered By</p>
+			<a href="https://kit.svelte.dev/" target="_blank"></a>
+		</code>
 	</footer>
 </div>
 

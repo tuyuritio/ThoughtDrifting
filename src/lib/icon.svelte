@@ -1,7 +1,9 @@
 <style lang="less">
 	i {
-		display: inline-flex;
-		padding: 2px 5px 0px;
+		position: relative;
+		display: flex;
+
+		top: 1.5px;
 	}
 </style>
 

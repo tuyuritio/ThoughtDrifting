@@ -24,7 +24,7 @@
 		details {
 			position: relative;
 
-			margin-left: 15px;
+			margin-left: 10px;
 			border-left: 2px solid @foreground;
 
 			&:last-child {
@@ -69,9 +69,9 @@
 
 				i {
 					display: block;
-					margin-top: 5px;
+					margin-top: 8px;
 
-					font-family: @monostyle;
+					font-family: @monospace;
 					font-size: 10px;
 					font-style: normal;
 					color: @remark;
