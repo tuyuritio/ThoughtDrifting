@@ -5,7 +5,7 @@
 
 		width: 100%;
 		max-width: 1500px;
-		height: calc(100vh - 210px); // 暂时想不到更好的办法
+		height: calc(100vh - 150px);
 
 		margin: 0px auto;
 
@@ -14,6 +14,7 @@
 			padding: 0px 15px;
 
 			overflow-y: auto;
+			scroll-behavior: smooth;
 		}
 
 		aside {

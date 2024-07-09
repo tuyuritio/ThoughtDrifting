@@ -64,7 +64,7 @@
 				max-width: 1500px;
 				flex-grow: 1;
 
-				margin: 50px auto 20px;
+				margin: 20px auto 0px;
 
 				nav {
 					ul {
