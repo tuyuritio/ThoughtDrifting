@@ -4,6 +4,32 @@
 		h2 {
 			font-family: "Playwrite MX";
 			font-weight: 200;
+			line-height: 2;
+		}
+
+		hr {
+			margin: 50px 0px;
+			border-bottom: 1px solid @foreground;
+		}
+
+		h3 {
+			font-size: 23px;
+			margin-bottom: 20px;
+		}
+
+		section {
+			display: inline-flex;
+			flex-direction: column;
+
+			max-width: 50%;
+
+			i {
+				align-self: flex-end;
+
+				margin-top: 10px;
+				font-size: 14px;
+				color: @foreground;
+			}
 		}
 	}
 </style>
@@ -11,4 +37,17 @@
 <main>
 	<h1>Hello!</h1>
 	<h2>And enjoy it.</h2>
+	{#if $page.data.date}
+		<hr />
+		<h3>前書</h3>
+		<section>
+			<Markdown>{@html $page.data.content}</Markdown>
+			<i>&emsp;&emsp;—— {$page.data.date}</i>
+		</section>
+	{/if}
 </main>
+
+<script>
+	import { page } from "$app/stores";
+	import Markdown from "$lib/markdown/markdown.svelte";
+</script>

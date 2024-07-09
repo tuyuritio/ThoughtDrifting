@@ -13,10 +13,8 @@ let database = client.db("Blog");
 const Mongo = {
 	note: database.collection("note"),
 	profile: database.collection("profile"),
+	preface: database.collection("preface"),
 	chronicle: database.collection("chronicle")
 }
-
-Mongo.profile.createIndex({ key: 1 }, { unique: true });
-Mongo.note.createIndex({ ID: 1 }, { unique: true });
 
 export default Mongo;
