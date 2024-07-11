@@ -23,7 +23,7 @@
 
 			max-width: 50%;
 
-			i {
+			a {
 				align-self: flex-end;
 
 				margin-top: 10px;
@@ -39,10 +39,10 @@
 	<h2>And enjoy it.</h2>
 	{#if $page.data.date}
 		<hr />
-		<h3>前書</h3>
+		<h3>序文</h3>
 		<section>
 			<Markdown>{@html $page.data.content}</Markdown>
-			<i>&emsp;&emsp;—— {$page.data.date}</i>
+			<a href="/preface">&emsp;&emsp;—— {$page.data.date}</a>
 		</section>
 	{/if}
 </main>

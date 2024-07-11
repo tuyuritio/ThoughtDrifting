@@ -201,7 +201,7 @@
 		<div id="main">
 			<nav>
 				<ul class="shadow">
-					<li class:location={$page.url.pathname == "/"}><a href="/">玄関</a></li>
+					<li class:location={$page.url.pathname == "/" || $page.url.pathname.startsWith("/preface")}><a href="/">玄関</a></li>
 					<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
 					<li class:location={$page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
 				</ul>
