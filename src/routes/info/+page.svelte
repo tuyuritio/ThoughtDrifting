@@ -4,18 +4,38 @@
 		flex-direction: row;
 
 		flex-grow: 1;
-		height: 100%;
+		height: calc(100vh - 150px);
+
+		article {
+			display: flex;
+			flex-direction: column;
+
+			margin-right: 50px;
+
+			overflow-y: auto;
+
+			div {
+				flex-grow: 0.5;
+
+				margin-bottom: 50px;
+
+				h1 {
+					margin-bottom: 40px;
+
+					font-size: 35px;
+				}
+			}
+		}
 
 		aside {
 			display: flex;
 			flex-direction: column;
 			justify-content: space-between;
 
-			height: 100%;
 			margin-left: auto;
 
 			> ul {
-				// margin-top: 35px;
+				margin-top: 35px;
 
 				list-style: none;
 
@@ -93,9 +113,21 @@
 </style>
 
 <main>
+	<article>
+		<div>
+			<h1>○○紹介</h1>
+			<Markdown>{@html $page.data.introduction}</Markdown>
+		</div>
+
+		<div>
+			<h1>○○声明</h1>
+			<Markdown>{@html $page.data.claim}</Markdown>
+		</div>
+	</article>
+
 	<aside>
 		<ul>
-			{#each data.chronicle as day}
+			{#each $page.data.chronicle as day}
 				<li>
 					<span>{day.date}</span>
 					<ul>
@@ -110,7 +142,6 @@
 </main>
 
 <script lang="ts">
-	import type { PageData } from "./$types";
-
-	export let data: PageData;
+	import { page } from "$app/stores";
+	import Markdown from "$lib/markdown/markdown.svelte";
 </script>

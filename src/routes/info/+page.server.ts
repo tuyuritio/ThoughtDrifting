@@ -1,5 +1,9 @@
 import type { PageServerLoad } from "./$types";
 import Mongo from "$lib/server/mongo";
+import FileSystem from "fs";
+import path from "path";
+import { BLOG_ASSET_PATH } from "$env/static/private";
+import { error } from "@sveltejs/kit";
 
 export const load: PageServerLoad = async () => {
 	let result = await Mongo.chronicle.find().toArray();
@@ -14,5 +18,19 @@ export const load: PageServerLoad = async () => {
 		}
 	}
 
-	return { chronicle };
+	let introduction;
+	try {
+		introduction = FileSystem.readFileSync(path.join(BLOG_ASSET_PATH, "introduction.html")).toString();
+	} catch (_) {
+		throw error(500, "紹介読取失敗");
+	}
+
+	let claim;
+	try {
+		claim = FileSystem.readFileSync(path.join(BLOG_ASSET_PATH, "claim.html")).toString();
+	} catch (_) {
+		throw error(500, "声明読取失敗");
+	}
+
+	return { chronicle, introduction, claim };
 };

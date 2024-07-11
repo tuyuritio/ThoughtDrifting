@@ -16,5 +16,5 @@ export const load: PageServerLoad = async () => {
 		}
 	});
 
-	return { prefaces: result };
+	return { prefaces: result.reverse() };
 };
