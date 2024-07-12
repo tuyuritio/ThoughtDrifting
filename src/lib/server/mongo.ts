@@ -9,12 +9,13 @@ try {
 	throw new Error("数據庫接続失敗");
 }
 
-let database = client.db("Blog");
+let database = client.db();
 const Mongo = {
 	note: database.collection("note"),
 	profile: database.collection("profile"),
 	preface: database.collection("preface"),
-	chronicle: database.collection("chronicle")
+	chronicle: database.collection("chronicle"),
+	visit: database.collection("visit")
 }
 
 export default Mongo;
