@@ -28,6 +28,11 @@
 			background-color: @foreground;
 		}
 	}
+
+	@supports not selector(::-webkit-scrollbar) {
+		scrollbar-width: thin;
+		scrollbar-color: @foreground transparent;
+	}
 }
 
 .shadow {

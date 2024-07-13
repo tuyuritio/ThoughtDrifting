@@ -10,7 +10,8 @@
 			display: flex;
 			flex-direction: column;
 
-			margin-right: 50px;
+			margin-right: 25px;
+			padding-right: 25px;
 
 			overflow-y: auto;
 
