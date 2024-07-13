@@ -33,11 +33,13 @@
 				border-width: 0px 0px 2px 2px;
 				padding: 0px 20px 0px 15px;
 
-				font-family: "Hiragino Gyosyo W4 JIS2004";
-				font-size: 30px;
-				font-weight: 100;
+				a {
+					font-family: "Hiragino Gyosyo W4 JIS2004";
+					font-size: 30px;
+					font-weight: 100;
 
-				text-shadow: @text-shadow;
+					text-shadow: @text-shadow;
+				}
 			}
 
 			address {
@@ -215,7 +217,7 @@
 <!-- 禁用预加载 -->
 <div id="frame" data-sveltekit-preload-data="false">
 	<header>
-		<h1 class="shadow">五月七日千緒</h1>
+		<h1 class="shadow"><a href="/">五月七日千緒</a></h1>
 		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
