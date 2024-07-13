@@ -32,6 +32,9 @@
 			flex-direction: column;
 			justify-content: space-between;
 
+			width: 300px;
+			flex-shrink: 0;
+
 			margin-left: auto;
 
 			> ul {
@@ -98,7 +101,7 @@
 					}
 
 					ul {
-						padding: 10px 30px 20px;
+						padding: 10px 0px 20px 30px;
 
 						li {
 							position: relative;
