@@ -38,14 +38,14 @@ pm2 save
 
 ```conf
 server {
-    server_name <HOSTNAME>;
+    server_name <DOMAIN>;
 
     location / {
         proxy_pass http://localhost:<PORT>;
+
         proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Real-IP $http_x_forwarded_for;   # For CDN
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto $scheme;
     }
 }
 ```

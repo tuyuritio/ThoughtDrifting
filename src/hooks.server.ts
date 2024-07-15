@@ -27,7 +27,7 @@ export const handle: Handle = async ({ event, resolve }) => {
 
 			let request = `${event.request.method} ${event.url.pathname}`;
 			if (!payload.view[request]) {
-				Mongo.visit.insertOne({ ID: payload.ID, IP: headers.get("X-Real-IP"), agent: headers.get("User-Agent"), time: now, request });
+				Mongo.visit.insertOne({ ID: payload.ID, IP: headers.get("X-Real-IP") ?? event.getClientAddress(), agent: headers.get("User-Agent"), time: now, request });
 				payload.view[request] = new Date().getTime() + 1000 * 5;
 			}
 
