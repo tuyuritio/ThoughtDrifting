@@ -28,17 +28,17 @@
 			border-left: 2px solid @foreground;
 
 			&:last-child {
-				border-left: none;
+				border-left: 2px solid transparent;
 
 				&::before {
 					content: "";
 					position: absolute;
 
 					top: 0px;
-					left: 0px;
+					left: -2px;
 
 					border-left: 2px solid black;
-					height: 24px;
+					height: 25px;
 				}
 			}
 
@@ -88,8 +88,9 @@
 <main>
 	<section>
 		<span><Icon name="search" size={20} /></span>
-		<input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" />
+		<input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" on:input={event => filter(event)} />
 	</section>
+
 	{#each notes as note}
 		<details>
 			{#if typeof note.content == "string"}
@@ -107,17 +108,22 @@
 </main>
 
 <script lang="ts">
+	import { page } from "$app/stores";
 	import Icon from "$lib/icon.svelte";
 	import Time from "$lib/time";
-	import type { PageData } from "./$types";
 
-	export let data: PageData;
+	let notes: any[] = $page.data.notes;
+	function filter(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
+		const input = event.currentTarget.value;
+		notes = $page.data.notes;
 
-	type Note = {
-		title: string;
-		timestamp: number;
-		content: string | Note[];
-	};
-
-	let notes: Note[] = data.notes;
+		let keywords = input.split(" ").filter(keyword => keyword.length > 0);
+		for (const keyword of keywords) {
+			if (keyword.startsWith("#")) {
+				notes = notes.filter(note => note.tags.some((tag: string) => keyword == tag.replaceAll("#", "")));
+			} else {
+				notes = notes.filter(note => note.title.toLowerCase().includes(keyword.toLowerCase()));
+			}
+		}
+	}
 </script>

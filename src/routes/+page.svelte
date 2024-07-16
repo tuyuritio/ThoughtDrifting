@@ -51,9 +51,6 @@
 	import { page } from "$app/stores";
 	import Markdown from "$lib/markdown/markdown.svelte";
 
-	let date: string;
-	page.subscribe((value) => {
-		let time = new Date(value.data.time);
-		date = `${time.getFullYear()} 年 ${time.getMonth() + 1} 月 ${time.getDate()} 日`;
-	});
+	let time = new Date($page.data.time);
+	let date = `${time.getFullYear()} 年 ${time.getMonth() + 1} 月 ${time.getDate()} 日`;
 </script>
