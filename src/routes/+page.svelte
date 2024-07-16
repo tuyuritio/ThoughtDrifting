@@ -37,17 +37,23 @@
 <main>
 	<h1>Hello!</h1>
 	<h2>And enjoy it.</h2>
-	{#if $page.data.date}
+	{#if $page.data.time}
 		<hr />
 		<h3>序文</h3>
 		<section>
 			<Markdown>{@html $page.data.content}</Markdown>
-			<a href="/preface">&emsp;&emsp;—— {$page.data.date}</a>
+			<a href="/preface">&emsp;&emsp;—— {date}</a>
 		</section>
 	{/if}
 </main>
 
-<script>
+<script lang="ts">
 	import { page } from "$app/stores";
 	import Markdown from "$lib/markdown/markdown.svelte";
+
+	let date: string;
+	page.subscribe((value) => {
+		let time = new Date(value.data.time);
+		date = `${time.getFullYear()} 年 ${time.getMonth() + 1} 月 ${time.getDate()} 日`;
+	});
 </script>

@@ -8,8 +8,7 @@ export const load: PageServerLoad = async () => {
 	let result = await Mongo.preface.find().project({ _id: 0 }).sort({ timestamp: -1 }).limit(1).toArray();
 	if (result.length) {
 		let html = FileSystem.readFileSync(Path.join(BLOG_ASSET_PATH, "preface", `${result[0].timestamp}.html`)).toString();
-		let date = new Date(result[0].timestamp);
 
-		return { date: `${date.getFullYear()} 年 ${date.getMonth() + 1} 月 ${date.getDate()} 日`, content: html };
+		return { time: result[0].timestamp, content: html };
 	}
 };
