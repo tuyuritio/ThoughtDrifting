@@ -15,7 +15,8 @@ const Mongo = {
 	profile: database.collection("profile"),
 	preface: database.collection("preface"),
 	chronicle: database.collection("chronicle"),
-	visit: database.collection("visit")
+	visit: database.collection("visit"),
+	image: database.collection("image")
 }
 
 export default Mongo;
