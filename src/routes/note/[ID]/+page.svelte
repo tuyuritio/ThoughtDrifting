@@ -35,11 +35,11 @@
 </style>
 
 <main>
-	<div bind:this={container}><Markdown>{@html data.content}</Markdown></div>
+	<div><Markdown>{@html data.content}</Markdown></div>
 	{#if data.contents}
 		<aside>
 			<h3>目次</h3>
-			<q bind:this={content}>{@html data.contents}</q>
+			<q>{@html data.contents}</q>
 		</aside>
 	{/if}
 </main>
@@ -49,7 +49,4 @@
 	import type { PageData } from "./$types";
 
 	export let data: PageData;
-
-	let container: HTMLDivElement;
-	let content: HTMLQuoteElement;
 </script>

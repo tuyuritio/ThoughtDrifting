@@ -1,6 +1,6 @@
 <style lang="less">
 	main {
-		section {
+		header {
 			display: flex;
 			flex-direction: row;
 			align-items: center;
@@ -17,7 +17,9 @@
 				background: transparent;
 				outline: none;
 
-				font-family: @monospace;
+				&::placeholder {
+					font-family: @monospace;
+				}
 			}
 		}
 
@@ -43,6 +45,8 @@
 			}
 
 			summary {
+				display: flex;
+
 				position: relative;
 				list-style: none;
 
@@ -63,18 +67,35 @@
 					cursor: pointer;
 				}
 
-				a:hover {
-					border-bottom: 2px solid @foreground;
+				section {
+					a:hover {
+						border-bottom: 2px solid @foreground;
+					}
+
+					i {
+						display: block;
+						margin-top: 8px;
+
+						font-family: @monospace;
+						font-size: 10px;
+						font-style: normal;
+						color: @remark;
+					}
 				}
 
-				i {
-					display: block;
-					margin-top: 8px;
+				aside {
+					display: flex;
+					margin-left: auto;
 
-					font-family: @monospace;
-					font-size: 10px;
-					font-style: normal;
-					color: @remark;
+					button {
+						margin-left: 10px;
+						padding: 0px;
+
+						font-size: 12px;
+						color: @remark;
+
+						cursor: pointer;
+					}
 				}
 			}
 
@@ -86,20 +107,50 @@
 </style>
 
 <main>
-	<section>
+	<header>
 		<span><Icon name="search" size={20} /></span>
-		<input type="text" placeholder="input.split(' ').match(/(?=#tag)/g)" on:input={event => filter(event)} />
-	</section>
+		<input type="text" placeholder="input.split(' ').match(/(?=#)tag/g)" bind:value={search} on:input={filter} />
+	</header>
 
-	{#each notes as note}
+	{#each list as note}
 		<details>
 			{#if typeof note.content == "string"}
-				<summary><a href="/note/{note.content}">{note.title}</a><i>{Time.format(note.timestamp)}</i></summary>
+				<summary>
+					<section>
+						<a href="/note/{note.content}">{note.title}</a>
+						<i>{Time.format(note.timestamp)}</i>
+					</section>
+					<aside>
+						{#each note.tags as tag}
+							<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+						{/each}
+					</aside>
+				</summary>
 			{:else}
-				<summary><strong>{note.title}</strong><i>{Time.format(note.timestamp)}</i></summary>
+				<summary>
+					<section>
+						<strong>{note.title}</strong>
+						<i>{Time.format(note.timestamp)}</i>
+					</section>
+					<aside>
+						{#each note.tags as tag}
+							<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+						{/each}
+					</aside>
+				</summary>
 				{#each note.content as subnote}
 					<details>
-						<summary><a href="/note/{subnote.content}">{subnote.title}</a><i>{Time.format(subnote.timestamp)}</i></summary>
+						<summary>
+							<section>
+								<a href="/note/{subnote.content}">{subnote.title}</a>
+								<i>{Time.format(subnote.timestamp)}</i>
+							</section>
+							<aside>
+								{#each subnote.tags as tag}
+									<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+								{/each}
+							</aside>
+						</summary>
 					</details>
 				{/each}
 			{/if}
@@ -113,16 +164,37 @@
 	import Time from "$lib/time";
 
 	let notes: any[] = $page.data.notes;
-	function filter(event: Event & { currentTarget: EventTarget & HTMLInputElement }) {
-		const input = event.currentTarget.value;
+	$: list = ((list: any[]) => {
+		let notes: any[] = [];
+		for (const data of list) {
+			data.content = data.ID;
+
+			if (data.series) {
+				let series = notes.find(note => note.title == data.series);
+				if (series) {
+					series.content.push(data);
+					series.tags = [...new Set([...series.tags, ...data.tags])];
+				} else {
+					notes.push({ title: data.series, timestamp: data.timestamp, tags: [...data.tags], content: [data] });
+				}
+			} else {
+				notes.push(data);
+			}
+		}
+
+		return notes.reverse();
+	})(notes);
+
+	let search: string = "";
+	function filter() {
 		notes = $page.data.notes;
 
-		let keywords = input.split(" ").filter(keyword => keyword.length > 0);
+		let keywords = search.split(" ").filter(keyword => keyword.length > 0);
 		for (const keyword of keywords) {
 			if (keyword.startsWith("#")) {
-				notes = notes.filter(note => note.tags.some((tag: string) => keyword == tag.replaceAll("#", "")));
+				notes = notes.filter(note => note.tags.some((tag: string) => keyword.replaceAll("#", "") == tag));
 			} else {
-				notes = notes.filter(note => note.title.toLowerCase().includes(keyword.toLowerCase()));
+				notes = notes.filter(note => note.title.toLowerCase().includes(keyword.toLowerCase()) || note.series?.toLowerCase().includes(keyword.toLowerCase()));
 			}
 		}
 	}
