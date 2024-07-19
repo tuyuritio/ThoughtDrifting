@@ -1,7 +1,0 @@
-User-agent: *
-Disallow: /
-Allow: /note/
-
-User-agent: Googlebot
-Disallow: /
-Allow: /note/
