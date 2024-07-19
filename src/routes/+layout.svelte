@@ -46,8 +46,12 @@
 				border-width: 0px 2px 2px 0px;
 				padding: 0px 15px;
 
-				a {
+				> * {
 					margin: 0px 10px;
+				}
+
+				#menu {
+					display: none;
 				}
 			}
 		}
@@ -67,6 +71,10 @@
 				flex-grow: 1;
 
 				margin: 20px auto 0px;
+
+				#responsive {
+					display: none;
+				}
 
 				nav {
 					ul {
@@ -187,6 +195,80 @@
 			}
 		}
 	}
+
+	@media screen and (max-width: @responsive) {
+		#frame {
+			header {
+				height: 40px;
+
+				h1 {
+					a {
+						font-size: 25px;
+					}
+				}
+
+				address {
+					padding: 0px 10px;
+
+					#menu {
+						display: block;
+						margin-right: 5px;
+					}
+				}
+			}
+
+			main {
+				#main {
+					position: relative;
+					margin: 0px;
+
+					#responsive:checked + nav {
+						display: flex;
+						position: absolute;
+						justify-content: center;
+
+						background-color: @background;
+						background-image: url("/paper.png");
+
+						z-index: 2;
+
+						width: 100%;
+
+						ul {
+							width: 100%;
+
+							border-width: 0px 0px 2px;
+							padding: 10px 0px;
+
+							li {
+								display: flex;
+								justify-content: center;
+
+								padding-left: 0px;
+
+								a {
+									width: 100%;
+									text-align: center;
+								}
+							}
+						}
+					}
+
+					nav {
+						display: none;
+					}
+
+					article {
+						margin: 20px 15px 0px;
+					}
+				}
+			}
+
+			footer {
+				display: none;
+			}
+		}
+	}
 </style>
 
 <!--
@@ -221,12 +303,14 @@
 		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
+			<label id="menu" for="responsive"><Icon name="three-bars" size={20} /></label>
 		</address>
 	</header>
 
 	<!-- 提供左边框 -->
 	<main class="shadow">
 		<div id="main">
+			<input id="responsive" type="checkbox" />
 			<nav>
 				<ul class="shadow">
 					<li class:location={$page.url.pathname == "/" || $page.url.pathname.startsWith("/preface")}><a href="/">玄関</a></li>
