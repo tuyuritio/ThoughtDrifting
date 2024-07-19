@@ -1,5 +1,10 @@
 <style lang="less">
 	main {
+		display: flex;
+		flex-direction: column;
+
+		height: calc(100vh - 150px);
+
 		h1,
 		h2 {
 			font-family: "Playwrite MX";
@@ -18,12 +23,17 @@
 		}
 
 		section {
-			display: inline-flex;
+			display: flex;
 			flex-direction: column;
+			align-self: flex-start;
 
-			max-width: 50%;
+			max-width: 75%;
+
+			overflow-y: auto;
 
 			a {
+				line-height: 1.5;
+
 				align-self: flex-end;
 
 				margin-top: 10px;

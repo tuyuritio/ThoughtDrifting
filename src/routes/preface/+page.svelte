@@ -1,11 +1,17 @@
 <style lang="less">
 	main {
+		display: flex;
+		flex-direction: column;
+
+		height: calc(100vh - 150px);
+
 		h1 {
 			margin-bottom: 20px;
 		}
 
 		ul {
 			list-style: none;
+			overflow-y: auto;
 
 			li {
 				hr {
