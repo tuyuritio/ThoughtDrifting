@@ -1,10 +1,8 @@
 import FileSystem from "fs";
-import JWT from "jsonwebtoken";
 import { error } from "@sveltejs/kit";
-import { BLOG_ASSET_PATH, BLOG_VISIT_KEY } from "$env/static/private";
+import { BLOG_ASSET_PATH } from "$env/static/private";
 import Mongo from "$lib/server/mongo";
 import type { PageServerLoad } from "./$types";
-import { randomBytes } from "crypto";
 
 export const load: PageServerLoad = async ({ params, cookies }) => {
 	const ID = params.ID;
@@ -26,9 +24,6 @@ export const load: PageServerLoad = async ({ params, cookies }) => {
 			content: html,
 			contents
 		};
-
-		if (!cookies.get("card")) cookies.set("card", JWT.sign({ "I can eat glass, it doesn't hurt me.": "The quick brown fox jumps over the lazy dog." }, BLOG_VISIT_KEY), { path: "/image" });
-
 		return note;
 	} catch (_) {
 		throw error(500, "文記失踪");
