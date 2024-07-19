@@ -122,7 +122,7 @@
 					</section>
 					<aside>
 						{#each note.tags as tag}
-							<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+							<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 						{/each}
 					</aside>
 				</summary>
@@ -134,7 +134,7 @@
 					</section>
 					<aside>
 						{#each note.tags as tag}
-							<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+							<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 						{/each}
 					</aside>
 				</summary>
@@ -147,7 +147,7 @@
 							</section>
 							<aside>
 								{#each subnote.tags as tag}
-									<button on:click={() => ((search += `#${tag}`), filter())}>#{tag}</button>
+									<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 								{/each}
 							</aside>
 						</summary>
