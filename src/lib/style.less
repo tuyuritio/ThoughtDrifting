@@ -3,12 +3,35 @@
 	src: local("Maple Mono NF CN"), local("Maple Mono NF"), url("/font/MapleMono-NF.ttf");
 }
 
+:root {
+	--background-color: #fffffb;
+	--foreground-color: #000000;
+	--remark-color: #757575;
+	// --shadow-color: #10101055;
+	--shadow-color: #cdcdcc;
+	--selection-color: #adadac;
+	--block-color: #cdcdcc88;
+	--back-opacity: 1;
+}
+
+[data-theme="dark"] {
+	--background-color: #181818;
+	--foreground-color: #e4e4e0;
+	--remark-color: #a5a5a5;
+	--shadow-color: #3a3a30;
+	--selection-color: #4f4f4a;
+	--block-color: #fdfdfc88;
+	--back-opacity: 0.2;
+}
+
 * {
 	margin: 0;
 	border: none;
 	padding: 0;
 
 	box-sizing: border-box;
+
+	color: @foreground;
 
 	font-family: @serif;
 	line-height: 1;
@@ -38,7 +61,7 @@
 .shadow {
 	position: relative;
 
-	border-color: black;
+	border-color: @foreground;
 	border-style: solid;
 
 	&::after {
@@ -73,7 +96,6 @@ button {
 
 a {
 	text-decoration: none;
-	color: black;
 
 	-webkit-user-drag: none;
 }

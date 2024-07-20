@@ -49,7 +49,7 @@
 						top: 0px;
 						left: -2px;
 
-						border-left: 2px solid black;
+						border-left: 2px solid @foreground;
 						height: 25px;
 					}
 				}
@@ -69,7 +69,7 @@
 						top: 23px;
 						left: 0px;
 
-						border-bottom: 2px solid black;
+						border-bottom: 2px solid @foreground;
 						width: 15px;
 					}
 

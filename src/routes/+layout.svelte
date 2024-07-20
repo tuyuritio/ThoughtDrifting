@@ -11,9 +11,24 @@
 		padding: 15px;
 
 		background-color: @background;
-		background-image: url("/paper.png");
-
 		z-index: 0;
+
+		&::after {
+			content: "";
+			position: absolute;
+
+			top: 0px;
+			left: 0px;
+
+			width: 100%;
+			height: 100%;
+
+			background-image: url("/paper.png");
+
+			opacity: @back-opacity;
+
+			z-index: -1;
+		}
 
 		header {
 			display: flex;
@@ -48,6 +63,10 @@
 
 				> * {
 					margin: 0px 10px;
+				}
+
+				button {
+					padding: 0px;
 				}
 
 				#menu {
@@ -96,7 +115,7 @@
 									top: 50%;
 									left: 0px;
 
-									border-bottom: 2px solid black;
+									border-bottom: 2px solid @foreground;
 									width: 15px;
 								}
 
@@ -303,6 +322,11 @@
 		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
+			{#if theme}
+				<button on:click={toggle_dark}>
+					{#if theme == "dark"}<Icon name="moon" />{:else}<Icon name="sun" />{/if}
+				</button>
+			{/if}
 			<label id="menu" for="responsive"><Icon name="three-bars" size={20} /></label>
 		</address>
 	</header>
@@ -341,8 +365,25 @@
 	</footer>
 </div>
 
+<svelte:head>
+	<script>
+		document.documentElement.dataset.theme = localStorage.getItem("theme") ?? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+	</script>
+</svelte:head>
+
 <script lang="ts">
+	import { onMount } from "svelte";
 	import { page } from "$app/stores";
 	import Icon from "$lib/icon.svelte";
 	import "$lib/style.less";
+
+	let theme: string;
+	function toggle_dark() {
+		theme = document.documentElement.dataset.theme = theme == "dark" ? "light" : "dark";
+		localStorage.setItem("theme", theme);
+	}
+
+	onMount(() => {
+		theme = document.documentElement.dataset.theme!;
+	});
 </script>

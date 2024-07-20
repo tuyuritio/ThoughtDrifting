@@ -165,6 +165,7 @@
 	.footnote {
 		&-ref {
 			a {
+				font-size: 0.8em;
 				color: @remark;
 
 				&:hover {
@@ -225,23 +226,43 @@
 		}
 
 		&-note {
-			color: #0969da;
+
+			&,
+			* {
+				color: #0969da;
+			}
 		}
 
 		&-tip {
-			color: #1a7f37;
+
+			&,
+			* {
+				color: #1a7f37;
+			}
 		}
 
 		&-important {
-			color: #8250df;
+
+			&,
+			* {
+				color: #8250df;
+			}
 		}
 
 		&-warning {
-			color: #bf8700;
+
+			&,
+			* {
+				color: #bf8700;
+			}
 		}
 
 		&-caution {
-			color: #cf222e;
+
+			&,
+			* {
+				color: #cf222e;
+			}
 		}
 
 		p:not(:first-child) {
