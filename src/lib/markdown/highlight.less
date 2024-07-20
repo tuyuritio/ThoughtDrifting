@@ -1,0 +1,276 @@
+:root {
+	--keyword-color: #a626a4;
+	--function-color: #4078f2;
+	--variable-color: #986801;
+	--comment-color: #a0a1a7;
+	--operator-color: #a626a4;
+	--symbol-color: #e45649;
+	--string-color: #50a14f;
+	--module-color: #a626a4;
+	--regex-color: #50a14f;
+	--selector-color: #e45649;
+	--punctuation-color: #a0a1a7;
+	--namespace-color: #dd4a68;
+}
+
+[data-theme="dark"] {
+	--keyword-color: #569cd6;
+	--function-color: #dcdcaa;
+	--variable-color: #9cdcfe;
+	--comment-color: #6a9955;
+	--operator-color: #d4d4d4;
+	--symbol-color: #b5cea8;
+	--string-color: #ce9178;
+	--module-color: #c586c0;
+	--regex-color: #d16969;
+	--selector-color: #d7ba7d;
+	--punctuation-color: #808080;
+	--namespace-color: #4ec9b0;
+}
+
+@keyword: var(--keyword-color);
+@function: var(--function-color);
+@variable: var(--variable-color);
+@comment: var(--comment-color);
+@operator: var(--operator-color);
+@symbol: var(--symbol-color);
+@string: var(--string-color);
+@module: var(--module-color);
+@regex: var(--regex-color);
+@selector: var(--selector-color);
+@punctuation: var(--punctuation-color);
+@namespace: var(--namespace-color);
+
+code[class*="language-"],
+pre[class*="language-"] {
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+}
+
+/**
+ * These are the minimum tokens you must style, you can rearrange them and/or style more tokens as you want
+ * The concepts behind these standard tokens, as well as some examples, can be found here: https://prismjs.com/tokens.html
+ */
+
+.namespace {
+	opacity: .7;
+}
+
+.token.doctype .token.doctype-tag {
+	color: @keyword;
+}
+
+.token.doctype .token.name {
+	color: @variable;
+}
+
+.token.comment,
+.token.prolog {
+	color: @comment;
+}
+
+.token.punctuation {
+	color: @operator;
+}
+
+.token.property,
+.token.tag,
+.token.boolean,
+.token.number,
+.token.constant,
+.token.symbol,
+.token.inserted,
+.token.unit {
+	color: @symbol;
+}
+
+.token.selector,
+.token.attr-name,
+.token.string,
+.token.char,
+.token.builtin,
+.token.deleted {
+	color: @string;
+}
+
+.token.operator,
+.token.entity {
+	color: @operator;
+}
+
+.token.operator.arrow {
+	color: @keyword;
+}
+
+.token.atrule {
+	color: @string;
+}
+
+.token.atrule .token.rule {
+	color: @module;
+}
+
+.token.atrule .token.url {
+	color: @variable;
+}
+
+.token.atrule .token.url .token.function {
+	color: @function;
+}
+
+.token.atrule .token.url .token.punctuation {
+	color: @operator;
+}
+
+.token.keyword {
+	color: @keyword;
+}
+
+.token.keyword.module,
+.token.keyword.control-flow {
+	color: @module;
+}
+
+.token.function,
+.token.function .token.maybe-class-name {
+	color: @function;
+}
+
+.token.regex {
+	color: @regex;
+}
+
+.token.important {
+	color: @keyword;
+}
+
+.token.italic {
+	font-style: italic;
+}
+
+.token.constant {
+	color: @variable;
+}
+
+.token.class-name,
+.token.maybe-class-name {
+	color: @namespace;
+}
+
+.token.console {
+	color: @variable;
+}
+
+.token.parameter {
+	color: @variable;
+}
+
+.token.interpolation {
+	color: @variable;
+}
+
+.token.punctuation.interpolation-punctuation {
+	color: @keyword;
+}
+
+.token.boolean {
+	color: @keyword;
+}
+
+.token.property,
+.token.variable,
+.token.imports .token.maybe-class-name,
+.token.exports .token.maybe-class-name {
+	color: @variable;
+}
+
+.token.selector {
+	color: @selector;
+}
+
+.token.escape {
+	color: @selector;
+}
+
+.token.tag {
+	color: @keyword;
+}
+
+.token.tag .token.punctuation {
+	color: @punctuation;
+}
+
+.token.cdata {
+	color: @punctuation;
+}
+
+.token.attr-name {
+	color: @variable;
+}
+
+.token.attr-value,
+.token.attr-value .token.punctuation {
+	color: @string;
+}
+
+.token.attr-value .token.punctuation.attr-equals {
+	color: @operator;
+}
+
+.token.entity {
+	color: @keyword;
+}
+
+.token.namespace {
+	color: @namespace;
+}
+
+/*********************************************************
+* Language Specific
+*/
+
+pre[class*="language-javascript"],
+code[class*="language-javascript"],
+pre[class*="language-jsx"],
+code[class*="language-jsx"],
+pre[class*="language-typescript"],
+code[class*="language-typescript"],
+pre[class*="language-tsx"],
+code[class*="language-tsx"] {
+	color: @variable;
+}
+
+pre[class*="language-css"],
+code[class*="language-css"] {
+	color: @string;
+}
+
+pre[class*="language-html"],
+code[class*="language-html"] {
+	color: @operator;
+}
+
+.language-regex .token.anchor {
+	color: @function;
+}
+
+.language-html .token.punctuation {
+	color: @punctuation;
+}
+
+.language-css .token.string.url {
+	text-decoration: underline;
+}
