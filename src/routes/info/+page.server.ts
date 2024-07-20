@@ -1,12 +1,12 @@
-import type { PageServerLoad } from "./$types";
-import Mongo from "$lib/server/mongo";
 import FileSystem from "fs";
 import path from "path";
-import { BLOG_ASSET_PATH } from "$env/static/private";
 import { error } from "@sveltejs/kit";
+import { BLOG_ASSET_PATH } from "$env/static/private";
+import Mongo from "$lib/server/mongo";
+import type { PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
-	let result = await Mongo.chronicle.find().toArray();
+	let result = await Mongo.chronicle.find().sort({ date: -1 }).toArray();
 
 	let chronicle: any[] = [];
 	for (const item of result) {
