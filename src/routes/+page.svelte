@@ -29,6 +29,8 @@
 
 			max-width: 75%;
 
+			padding-right: 5px;
+
 			overflow-y: auto;
 
 			a {
@@ -39,6 +41,20 @@
 				margin-top: 10px;
 				font-size: 14px;
 				color: @foreground;
+			}
+		}
+	}
+
+	@media screen and (max-width: @responsive) {
+		main {
+			height: calc(100vh - 100px);
+
+			hr {
+				margin: 20px 0px;
+			}
+
+			section {
+				max-width: 100%;
 			}
 		}
 	}

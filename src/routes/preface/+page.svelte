@@ -26,6 +26,20 @@
 			}
 		}
 	}
+
+	@media screen and (max-width: @responsive) {
+		main {
+			height: calc(100vh - 100px);
+
+			ul {
+				li {
+					hr {
+						margin: 20px 0px;
+					}
+				}
+			}
+		}
+	}
 </style>
 
 <main>

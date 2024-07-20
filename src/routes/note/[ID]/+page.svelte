@@ -11,7 +11,7 @@
 
 		div {
 			flex-grow: 1;
-			padding: 0px 15px;
+			padding-right: 10px;
 
 			overflow-y: auto;
 			scroll-behavior: smooth;
@@ -29,6 +29,16 @@
 
 			q {
 				quotes: none;
+			}
+		}
+	}
+
+	@media screen and (max-width: @responsive) {
+		main {
+			height: calc(100vh - 100px);
+
+			aside {
+				display: none;
 			}
 		}
 	}

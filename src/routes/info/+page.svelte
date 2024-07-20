@@ -10,8 +10,8 @@
 			display: flex;
 			flex-direction: column;
 
-			margin-right: 25px;
-			padding-right: 25px;
+			margin-right: 10px;
+			padding-right: 10px;
 
 			overflow-y: auto;
 
@@ -37,6 +37,9 @@
 			flex-shrink: 0;
 
 			margin-left: auto;
+			padding-left: 10px;
+
+			overflow-y: auto;
 
 			> ul {
 				margin-top: 35px;
@@ -111,6 +114,25 @@
 						}
 					}
 				}
+			}
+		}
+	}
+
+	@media screen and (max-width: @responsive) {
+		main {
+			display: flex;
+			flex-direction: column;
+
+			height: calc(100vh - 100px);
+			overflow-y: auto;
+
+			article {
+				margin-right: 0px;
+				overflow: visible;
+			}
+
+			aside {
+				margin-left: 0px;
 			}
 		}
 	}

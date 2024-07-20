@@ -224,7 +224,11 @@
 
 					#responsive:checked + nav {
 						display: flex;
+					}
+
+					nav {
 						position: absolute;
+						display: none;
 						justify-content: center;
 
 						background-color: @background;
@@ -254,12 +258,8 @@
 						}
 					}
 
-					nav {
-						display: none;
-					}
-
 					article {
-						margin: 20px 15px 0px;
+						margin: 20px 0px 0px 15px;
 					}
 				}
 			}
