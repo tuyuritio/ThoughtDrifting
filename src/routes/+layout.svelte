@@ -85,9 +85,7 @@
 				display: flex;
 				flex-direction: row;
 
-				width: 100%;
-				max-width: 1500px;
-				flex-grow: 1;
+				width: min(100%, 1500px);
 
 				margin: 20px auto 0px;
 
