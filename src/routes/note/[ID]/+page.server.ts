@@ -7,7 +7,7 @@ import type { PageServerLoad } from "./$types";
 export const load: PageServerLoad = async ({ params, cookies }) => {
 	const ID = params.ID;
 
-	let result = await Mongo.note.findOne({ ID });
+	let result = await Mongo.note.findOne({ ID, visibility: true });
 	if (!result) throw error(404, "文記不存在");
 
 	try {
