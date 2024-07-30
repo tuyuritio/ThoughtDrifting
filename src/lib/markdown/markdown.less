@@ -274,6 +274,15 @@
 			color: @foreground;
 		}
 	}
+
+	.spoiler {
+		filter: blur(3px);
+		transition: filter 50ms;
+
+		&:hover {
+			filter: none;
+		}
+	}
 }
 
 [data-theme="dark"] {
