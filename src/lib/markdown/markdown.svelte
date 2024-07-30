@@ -8,6 +8,5 @@
 
 <script lang="ts">
 	import "./markdown.less";
-	import "./katex.less";
 	import "./highlight.less";
 </script>
