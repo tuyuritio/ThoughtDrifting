@@ -31,8 +31,6 @@
 
 	box-sizing: border-box;
 
-	color: @foreground;
-
 	font-family: @serif;
 	line-height: 1;
 	user-select: none;
@@ -58,9 +56,14 @@
 	}
 }
 
+body {
+	color: @foreground;
+}
+
 .shadow {
 	position: relative;
 
+	border-width: 2px;
 	border-color: @foreground;
 	border-style: solid;
 
@@ -77,10 +80,15 @@
 		border-style: solid;
 		border-width: inherit;
 
-		pointer-events: none;
-
 		z-index: -1;
 	}
+}
+
+a {
+	text-decoration: none;
+	color: inherit;
+
+	-webkit-user-drag: none;
 }
 
 button {
@@ -90,14 +98,10 @@ button {
 
 	padding: 10px 30px;
 
+	color: inherit;
+
 	cursor: pointer;
 	background: transparent;
-}
-
-a {
-	text-decoration: none;
-
-	-webkit-user-drag: none;
 }
 
 img {
