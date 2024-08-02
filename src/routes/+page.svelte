@@ -5,11 +5,38 @@
 
 		height: calc(100vh - 150px);
 
-		h1,
-		h2 {
-			font-family: "Playwrite MX";
-			font-weight: 200;
-			line-height: 2;
+		header {
+			display: flex;
+			flex-wrap: wrap-reverse;
+
+			h1 {
+				margin-right: auto;
+
+				p {
+					font-family: "Playwrite MX";
+					font-size: 25px;
+					font-weight: 100;
+					line-height: 2;
+				}
+
+				div {
+					display: flex;
+					flex-wrap: wrap;
+				}
+			}
+
+			svg {
+				width: 100px;
+				height: 100px;
+
+				path {
+					fill: none;
+					stroke: currentColor;
+					stroke-linecap: round;
+					stroke-miterlimit: 10;
+					stroke-width: 9px;
+				}
+			}
 		}
 
 		hr {
@@ -49,6 +76,14 @@
 		main {
 			height: calc(100vh - 100px);
 
+			header {
+				h1 {
+					p {
+						font-size: 20px;
+					}
+				}
+			}
+
 			hr {
 				margin: 20px 0px;
 			}
@@ -61,8 +96,25 @@
 </style>
 
 <main>
-	<h1>Hello!</h1>
-	<h2>And enjoy it.</h2>
+	<header>
+		<h1>
+			<p>Life is sailing.</p>
+			<div>
+				<p>With heart as compass,</p>
+				<p>&ensp;just soar into the cloud.</p>
+			</div>
+		</h1>
+		<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 845.9">
+			<path d="m267.8,608.8c-9.6-17.6-20.6-41.6-28.1-71.6-8.9-35.4-9.8-66.3-8.7-88.3,220.1,54.3,440.2,108.5,660.4,162.8-8.6,19.4-24.2,47.4-52.4,72.5-10.7,9.6-21.4,17.1-31.2,22.9" />
+			<path d="m369.7,435.2c14.9-24.5,167.3-267.7,375.5-252.5,24.7,1.8,53.3,7.5,84.4,20.5" />
+			<path d="m682.1,503.1c5.1-53.8,22.5-146.9,88.4-234.8,19.5-26,40.1-47.2,59.5-64.4" />
+			<path d="m803.6,547.7c-16.6-41.1-41.5-119.9-27.6-216.6,6-41.5,17.6-76.2,29.4-103.3" />
+			<path d="m130,641.5c20.6-21.9,26.3-45.6,17.6-56.8-7.3-9.4-23.4-8.1-29.8-7.6-31.5,2.5-51.3,29.8-57.2,37.9-8.3,11.5-21.2,29.3-19.1,54,.6,6.5,3.7,31.6,26,47.2,14.5,10.2,30.8,11.1,40.7,10.9,74.7-1.3,178.9-66.1,266.5-67.1,29.4-.3,74.4,6.3,130.5,45.1" />
+			<path d="m371.2,734.1c7.2,10.7,19.4,24.9,38.2,31.8,35.4,12.9,72.7-8.6,84.7-14.7,38.6-19.6,110.4-30,256.7,17.5" />
+			<path d="m652.1,786.7c7.1,8.2,19,19.5,36.2,26,41.3,15.8,78.6-8.7,121.2-19.3,32.8-8.2,81.8-11.4,149.3,14.1" />
+		</svg>
+	</header>
+
 	{#if $page.data.time}
 		<hr />
 		<h3>序文</h3>
