@@ -18,8 +18,11 @@
 		}
 
 		aside {
-			margin: 0px 20px;
+			flex-shrink: 0;
 			max-width: 250px;
+
+			margin-left: 20px;
+			padding-right: 10px;
 
 			overflow-y: auto;
 
