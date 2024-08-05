@@ -81,7 +81,7 @@
 						min-width: 130px;
 
 						a:hover {
-							border-bottom: 2px solid @foreground;
+							text-decoration: underline;
 						}
 
 						i {
