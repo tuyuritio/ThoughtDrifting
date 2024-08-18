@@ -4,7 +4,7 @@
 		flex-direction: row;
 
 		flex-grow: 1;
-		height: calc(100vh - 150px);
+		height: calc(100vh - 100px);
 
 		article {
 			display: flex;

@@ -5,7 +5,7 @@
 
 		width: 100%;
 		max-width: 1500px;
-		height: calc(100vh - 150px);
+		height: calc(100vh - 100px);
 
 		margin: 0px auto;
 

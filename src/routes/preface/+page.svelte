@@ -3,7 +3,7 @@
 		display: flex;
 		flex-direction: column;
 
-		height: calc(100vh - 150px);
+		height: calc(100vh - 100px);
 
 		h1 {
 			margin-bottom: 20px;
