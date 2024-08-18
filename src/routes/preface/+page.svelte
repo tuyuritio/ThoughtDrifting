@@ -48,7 +48,7 @@
 		{#each $page.data.prefaces as preface}
 			<li>
 				<hr />
-				<h2>{Time(preface.timestamp)}</h2>
+				<h2 title={Time.full(preface.timestamp, Time.user_timezone)}>{Time(preface.timestamp)}</h2>
 				<Markdown>{@html preface.content}</Markdown>
 			</li>
 		{/each}
