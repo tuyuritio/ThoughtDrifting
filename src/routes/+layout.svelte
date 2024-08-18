@@ -8,7 +8,7 @@
 		height: 100vh;
 		width: 100vw;
 
-		padding: 15px;
+		padding: 10px;
 
 		background-color: @background;
 		z-index: 0;
@@ -35,29 +35,24 @@
 			flex-direction: row;
 			justify-content: space-between;
 
-			height: 60px;
-
-			> * {
-				display: flex;
-				align-items: center;
-
-				height: 100%;
-			}
+			height: 45px;
 
 			h1 {
 				border-width: 0px 0px 2px 2px;
 				padding: 0px 20px 0px 15px;
 
 				a {
-					font-family: "Hiragino Gyosyo W4 JIS2004";
-					font-size: 30px;
-					font-weight: 100;
+					font-family: @serif;
+					font-size: 25px;
 
 					text-shadow: @text-shadow;
 				}
 			}
 
 			address {
+				display: flex;
+				align-items: center;
+
 				border-width: 0px 2px 2px 0px;
 				padding: 0px 15px;
 
@@ -87,7 +82,7 @@
 
 				width: min(100%, 1500px);
 
-				margin: 20px auto 0px;
+				margin: 0px auto;
 
 				#responsive {
 					display: none;
@@ -149,13 +144,13 @@
 
 		footer {
 			display: flex;
-			align-items: center;
+			align-items: end;
 			justify-content: space-between;
 
-			height: 40px;
+			height: 35px;
 
 			border-width: 2px 0px 0px 2px;
-			padding-top: 10px;
+			padding-bottom: 5px;
 
 			font-size: 13px;
 			font-weight: bold;
@@ -290,24 +285,24 @@
 
 <!--
 +- body -----------------------------------------+
-| padding: 15px;                                 |
+| padding: 10px;                                 |
 |                                                |
 | +- header -----------------------------------+ |
-| | height: 60px;                              | |
+| | height: 45px;                              | |
 | |                                            | |   
 | +--------------------------------------------+ |
 |                                                |
 | +- #main ------------------------------------+ |
-| | margin: 20px auto 0px;                     | |
+| | margin: 0px auto;                          | |
 | |                                            | |
 | | +- nav -+ +- article --------------------+ | |
-| | |       | | height: calc(100vh - 150px); | | |
+| | |       | | height: calc(100vh - 100px); | | |
 | | |       | |                              | | |
 | | +-------+ +------------------------------+ | |
 | +--------------------------------------------+ |
 |                                                |
 | +- footer -----------------------------------+ |
-| | height: 40px;                              | |
+| | height: 35px;                              | |
 | |                                            | |
 | +--------------------------------------------+ |
 +------------------------------------------------+
@@ -316,7 +311,7 @@
 <!-- 禁用预加载 -->
 <div id="frame" data-sveltekit-preload-data="false">
 	<header>
-		<h1 class="shadow"><a href="/">五月七日千緒</a></h1>
+		<h1 class="shadow"><a href="/">記緒計画</a></h1>
 		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
