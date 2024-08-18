@@ -141,18 +141,18 @@
 			{#if typeof note.content == "string"}
 				<section>
 					<p><a href="/note/{note.content}">{note.title}</a></p>
-					<i>{Time(note.timestamp)}</i>
+					<i title={Time.full(note.timestamp, Time.user_timezone)}>{Time(note.timestamp)}</i>
 				</section>
 			{:else}
 				<details>
 					<summary>
 						<p>{note.title}</p>
-						<i>{Time(note.timestamp)}</i>
+						<i title={Time.full(note.timestamp, Time.user_timezone)}>{Time(note.timestamp)}</i>
 					</summary>
 					{#each note.content as entry}
 						<section>
 							<p><a href="/note/{entry.content}">{entry.title}</a></p>
-							<i>{Time(entry.timestamp)}</i>
+							<i title={Time.full(entry.timestamp, Time.user_timezone)}>{Time(entry.timestamp)}</i>
 						</section>
 					{/each}
 				</details>
