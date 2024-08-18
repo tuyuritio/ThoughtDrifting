@@ -91,6 +91,8 @@
 				nav {
 					ul {
 						list-style: none;
+
+						margin-right: 50px;
 						border-width: 0px 2px 0px 0px;
 						padding: 20px 40px 50px 0px;
 
@@ -135,8 +137,6 @@
 				article {
 					flex-grow: 1;
 					width: 0px;
-
-					margin: 0px 50px;
 				}
 			}
 		}
