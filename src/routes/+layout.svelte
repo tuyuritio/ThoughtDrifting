@@ -92,8 +92,7 @@
 					ul {
 						list-style: none;
 						border-width: 0px 2px 0px 0px;
-						padding-right: 40px;
-						padding-bottom: 50px;
+						padding: 20px 40px 50px 0px;
 
 						li {
 							position: relative;

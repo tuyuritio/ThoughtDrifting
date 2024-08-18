@@ -57,6 +57,10 @@
 	{/if}
 </main>
 
+<svelte:head>
+	<title>記緒計画 | {data.title}</title>
+</svelte:head>
+
 <script lang="ts">
 	import Markdown from "$lib/markdown/markdown.svelte";
 	import type { PageData } from "./$types";

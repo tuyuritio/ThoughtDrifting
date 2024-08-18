@@ -180,6 +180,10 @@
 	</article>
 </main>
 
+<svelte:head>
+	<title>記緒計画 | 文記</title>
+</svelte:head>
+
 <script lang="ts">
 	import { page } from "$app/stores";
 	import Icon from "$lib/icon.svelte";

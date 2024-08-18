@@ -167,6 +167,10 @@
 	</aside>
 </main>
 
+<svelte:head>
+	<title>記緒計画 | 情報</title>
+</svelte:head>
+
 <script lang="ts">
 	import { page } from "$app/stores";
 	import Markdown from "$lib/markdown/markdown.svelte";
