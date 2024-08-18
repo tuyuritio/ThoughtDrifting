@@ -29,91 +29,95 @@
 		}
 
 		article {
-			padding-right: 5px;
+			display: flex;
+			flex-direction: column;
+
+			padding-left: 50px;
 
 			overflow-y: auto;
 
+			section,
+			summary {
+				position: relative;
+				display: flex;
+				flex-direction: column;
+
+				padding-top: 20px;
+
+				&::after {
+					content: "";
+					position: absolute;
+
+					top: 55%;
+					left: -40px;
+
+					width: 15px;
+
+					border-bottom: 2px solid @foreground;
+				}
+
+				p {
+					display: flex;
+					flex-direction: row;
+
+					a:hover {
+						text-decoration: underline;
+					}
+
+					span {
+						margin-left: 10px;
+					}
+				}
+
+				i {
+					margin-top: 5px;
+
+					font-family: @monospace, @serif;
+					font-size: 0.65rem;
+					font-style: normal;
+					color: @remark;
+					line-height: 1.2;
+				}
+			}
+
+			section,
 			details {
 				position: relative;
 
-				margin-left: 10px;
-				border-left: 2px solid @foreground;
+				&::before {
+					content: "";
+					position: absolute;
 
-				&:last-child {
-					border-left: 2px solid transparent;
+					top: 0px;
+					left: -40px;
 
-					&::before {
-						content: "";
-						position: absolute;
+					height: 100%;
 
-						top: 0px;
-						left: -2px;
-
-						border-left: 2px solid @foreground;
-						height: 25px;
-					}
+					border-left: 2px solid @foreground;
 				}
 
+				&:last-child::before {
+					height: 55%;
+				}
+			}
+
+			details {
 				summary {
-					display: flex;
-
-					position: relative;
 					list-style: none;
+					cursor: pointer;
 
-					padding: 10px 0px 10px 40px;
-
-					&::before {
-						content: "";
-						position: absolute;
-
-						top: 23px;
-						left: 0px;
-
-						border-bottom: 2px solid @foreground;
-						width: 15px;
-					}
-
-					&:not(:only-child) {
-						cursor: pointer;
-					}
-
-					section {
-						min-width: 130px;
-
-						a:hover {
-							text-decoration: underline;
-						}
-
-						i {
-							display: block;
-							margin-top: 8px;
-
-							font-family: @monospace;
-							font-size: 10px;
-							font-style: normal;
-							color: @remark;
-						}
-					}
-
-					aside {
-						display: flex;
-						margin-left: auto;
-						flex-wrap: wrap;
-
-						button {
-							margin-left: 10px;
-							padding: 0px;
-
-							font-size: 12px;
-							color: @remark;
-
-							cursor: pointer;
-						}
+					p {
+						font-weight: bolder;
 					}
 				}
 
-				> details {
+				section {
 					margin-left: 45px;
+
+					&:nth-child(2) {
+						margin-top: 10px;
+						padding-top: 10px;
+					}
 				}
 			}
 		}
@@ -134,48 +138,25 @@
 
 	<article>
 		{#each list as note}
-			<details>
-				{#if typeof note.content == "string"}
+			{#if typeof note.content == "string"}
+				<section>
+					<p><a href="/note/{note.content}">{note.title}</a></p>
+					<i>{Time(note.timestamp)}</i>
+				</section>
+			{:else}
+				<details>
 					<summary>
-						<section>
-							<a href="/note/{note.content}">{note.title}</a>
-							<i>{Time(note.timestamp)}</i>
-						</section>
-						<aside>
-							{#each note.tags as tag}
-								<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
-							{/each}
-						</aside>
+						<p>{note.title}</p>
+						<i>{Time(note.timestamp)}</i>
 					</summary>
-				{:else}
-					<summary>
+					{#each note.content as entry}
 						<section>
-							<strong>{note.title}</strong>
-							<i>{Time(note.timestamp)}</i>
+							<p><a href="/note/{entry.content}">{entry.title}</a></p>
+							<i>{Time(entry.timestamp)}</i>
 						</section>
-						<aside>
-							{#each note.tags as tag}
-								<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
-							{/each}
-						</aside>
-					</summary>
-					{#each note.content as subnote}
-						<details>
-							<summary>
-								<section>
-									<a href="/note/{subnote.content}">{subnote.title}</a>
-									<i>{Time(subnote.timestamp)}</i>
-								</section>
-								<aside>
-									{#each subnote.tags as tag}
-										<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
-									{/each}
-								</aside>
-							</summary>
-						</details>
 					{/each}
-				{/if}
-			</details>
+				</details>
+			{/if}
 		{/each}
 	</article>
 </main>
