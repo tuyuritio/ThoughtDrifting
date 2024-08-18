@@ -10,12 +10,13 @@
 
 ### 配置环境变量
 
-在 `.env.local` 中添加以下变量：
+在 `.env` 中添加以下变量：
 
 ```sh
 DATABASE_URL=       # 精确到数据库名，mongodb://<username>:<password>@<host>:<port>/<database>
 BLOG_ASSET_PATH=    # 资源相对路径
 BLOG_VISIT_KEY=     # 用于生成 Cookie
+VITE_TIMEZONE=      # 默认显示时区，https://en.wikipedia.org/wiki/List_of_tz_database_time_zones
 ```
 
 ### 编译

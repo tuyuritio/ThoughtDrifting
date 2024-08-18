@@ -139,7 +139,7 @@
 					<summary>
 						<section>
 							<a href="/note/{note.content}">{note.title}</a>
-							<i>{Time.format(note.timestamp)}</i>
+							<i>{Time(note.timestamp)}</i>
 						</section>
 						<aside>
 							{#each note.tags as tag}
@@ -151,7 +151,7 @@
 					<summary>
 						<section>
 							<strong>{note.title}</strong>
-							<i>{Time.format(note.timestamp)}</i>
+							<i>{Time(note.timestamp)}</i>
 						</section>
 						<aside>
 							{#each note.tags as tag}
@@ -164,7 +164,7 @@
 							<summary>
 								<section>
 									<a href="/note/{subnote.content}">{subnote.title}</a>
-									<i>{Time.format(subnote.timestamp)}</i>
+									<i>{Time(subnote.timestamp)}</i>
 								</section>
 								<aside>
 									{#each subnote.tags as tag}
