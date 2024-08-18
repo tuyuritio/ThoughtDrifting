@@ -12,7 +12,7 @@ export const load: PageServerLoad = async () => {
 		try {
 			preface.content = FileSystem.readFileSync(`${BLOG_ASSET_PATH}/preface/${preface.timestamp}.html`).toString();
 		} catch (_) {
-			throw error(500, `序文 ${Time.format(preface.timestamp, "date")} 失踪`);
+			throw error(500, `序文 ${Time(preface.timestamp, "date")} 失踪`);
 		}
 	});
 
