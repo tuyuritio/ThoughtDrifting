@@ -72,7 +72,7 @@
 
 		<dl>
 			<dt><Icon name="calendar" /></dt>
-			<dd>{Time(data.timestamp)}</dd>
+			<dd title={Time.full(data.timestamp, Time.user_timezone)}>{Time(data.timestamp)}</dd>
 		</dl>
 
 		{#if data.series}
