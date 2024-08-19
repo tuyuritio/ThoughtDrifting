@@ -48,7 +48,7 @@
 					content: "";
 					position: absolute;
 
-					top: 55%;
+					top: 32px;
 					left: -40px;
 
 					width: 15px;
@@ -76,7 +76,7 @@
 					font-size: 0.65rem;
 					font-style: normal;
 					color: @remark;
-					line-height: 1.2;
+					line-height: normal;
 				}
 			}
 
@@ -97,7 +97,7 @@
 				}
 
 				&:last-child::before {
-					height: 55%;
+					height: 32px;
 				}
 			}
 
