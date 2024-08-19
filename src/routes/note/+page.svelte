@@ -19,6 +19,7 @@
 
 				width: 300px;
 
+				color: @foreground;
 				background: transparent;
 				outline: none;
 
@@ -48,7 +49,7 @@
 					content: "";
 					position: absolute;
 
-					top: 32px;
+					top: 30px;
 					left: -40px;
 
 					width: 15px;
@@ -65,7 +66,16 @@
 					}
 
 					span {
-						margin-left: 10px;
+						display: flex;
+						align-items: center;
+
+						margin-left: auto;
+
+						color: @remark;
+
+						button {
+							padding: 0px 0px 0px 10px;
+						}
 					}
 				}
 
@@ -97,7 +107,7 @@
 				}
 
 				&:last-child::before {
-					height: 32px;
+					height: 30px;
 				}
 			}
 
@@ -105,10 +115,6 @@
 				summary {
 					list-style: none;
 					cursor: pointer;
-
-					p {
-						font-weight: bolder;
-					}
 				}
 
 				section {
@@ -116,7 +122,6 @@
 
 					&:nth-child(2) {
 						margin-top: 10px;
-						padding-top: 10px;
 					}
 				}
 			}
@@ -140,18 +145,39 @@
 		{#each list as note}
 			{#if typeof note.content == "string"}
 				<section>
-					<p><a href="/note/{note.content}">{note.title}</a></p>
+					<p>
+						<a href="/note/{note.content}">{note.title}</a>
+						<span>
+							{#each note.tags as tag}
+								<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+							{/each}
+						</span>
+					</p>
 					<i title={Time.full(note.timestamp, Time.user_timezone)}>{Time(note.timestamp)}</i>
 				</section>
 			{:else}
 				<details>
 					<summary>
-						<p>{note.title}</p>
+						<p>
+							<strong>{note.title}</strong>
+							<span>
+								{#each note.tags as tag}
+									<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+								{/each}
+							</span>
+						</p>
 						<i title={Time.full(note.timestamp, Time.user_timezone)}>{Time(note.timestamp)}</i>
 					</summary>
 					{#each note.content as entry}
 						<section>
-							<p><a href="/note/{entry.content}">{entry.title}</a></p>
+							<p>
+								<a href="/note/{entry.content}">{entry.title}</a>
+								<span>
+									{#each entry.tags as tag}
+										<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+									{/each}
+								</span>
+							</p>
 							<i title={Time.full(entry.timestamp, Time.user_timezone)}>{Time(entry.timestamp)}</i>
 						</section>
 					{/each}
