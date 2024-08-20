@@ -310,7 +310,7 @@
 <!-- 禁用预加载 -->
 <div id="frame" data-sveltekit-preload-data="false">
 	<header>
-		<h1 class="shadow"><a href="/">記緒計画</a></h1>
+		<h1 class="shadow"><a href="/">記緒漂流</a></h1>
 		<address class="shadow">
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>

@@ -1,6 +1,6 @@
-# Blog
+# Thought Drifting
 
-个人博客。
+个人随笔记录站点。
 
 ## 安装
 
@@ -30,7 +30,7 @@ npm run build
 
 ```sh
 sudo npm install --global pm2
-PORT=<PORT> pm2 start build/index.js --name Blog
+PORT=<PORT> pm2 start build/index.js --name drift
 pm2 startup
 pm2 save
 ```

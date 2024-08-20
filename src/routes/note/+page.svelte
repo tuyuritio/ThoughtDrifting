@@ -188,7 +188,7 @@
 </main>
 
 <svelte:head>
-	<title>記緒計画 | 文記</title>
+	<title>記緒漂流 | 文記</title>
 </svelte:head>
 
 <script lang="ts">

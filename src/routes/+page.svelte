@@ -126,7 +126,7 @@
 </main>
 
 <svelte:head>
-	<title>記緒計画 | 玄関</title>
+	<title>記緒漂流 | 玄関</title>
 </svelte:head>
 
 <script lang="ts">

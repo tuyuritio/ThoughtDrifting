@@ -97,7 +97,7 @@
 </main>
 
 <svelte:head>
-	<title>記緒計画 | {data.title}</title>
+	<title>記緒漂流 | {data.title}</title>
 </svelte:head>
 
 <script lang="ts">
