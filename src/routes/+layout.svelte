@@ -307,8 +307,7 @@
 +------------------------------------------------+
 -->
 
-<!-- 禁用预加载 -->
-<div id="frame" data-sveltekit-preload-data="false">
+<div id="frame">
 	<header>
 		<h1 class="shadow"><a href="/">記緒漂流</a></h1>
 		<address class="shadow">
