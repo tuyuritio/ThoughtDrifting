@@ -340,7 +340,7 @@
 	<footer class="shadow">
 		<cite>
 			<span>&emsp;2024</span>
-			<a target="_blank" href="https://blog.tuur.cc">TuyuriTio</a>
+			<a href="/">TuyuriTio</a>
 			<span> | </span>
 			<a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">
 				<img src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt="CC" />
