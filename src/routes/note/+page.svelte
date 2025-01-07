@@ -138,7 +138,7 @@
 <main>
 	<header>
 		<span><Icon name="search" size={20} /></span>
-		<input type="text" placeholder="input.split(' ').match(/(?=#)tag/g)" bind:value={search} on:input={filter} />
+		<input type="text" placeholder="input.split(' ').match(/(?=#)tag/g)" bind:value={search} oninput={filter} />
 	</header>
 
 	<article>
@@ -149,7 +149,7 @@
 						<a href="/note/{note.content}">{note.title}</a>
 						<span>
 							{#each note.tags as tag}
-								<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+								<button onclick={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 							{/each}
 						</span>
 					</p>
@@ -162,7 +162,7 @@
 							<strong>{note.title}</strong>
 							<span>
 								{#each note.tags as tag}
-									<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+									<button onclick={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 								{/each}
 							</span>
 						</p>
@@ -174,7 +174,7 @@
 								<a href="/note/{entry.content}">{entry.title}</a>
 								<span>
 									{#each entry.tags as tag}
-										<button on:click={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
+										<button onclick={() => ((search += ` #${tag}`), filter())}>#{tag}</button>
 									{/each}
 								</span>
 							</p>
@@ -192,12 +192,12 @@
 </svelte:head>
 
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Icon from "$lib/icon.svelte";
 	import Time from "$lib/time";
 
-	let notes: any[] = $page.data.notes;
-	$: list = ((list: any[]) => {
+	let notes: any[] = $state(page.data.notes);
+	let list = $derived(((list: any[]) => {
 		let notes: any[] = [];
 		for (const data of list) {
 			data.content = data.ID;
@@ -216,11 +216,11 @@
 		}
 
 		return notes.reverse();
-	})(notes);
+	})(notes));
 
-	let search: string = "";
+	let search: string = $state("");
 	function filter() {
-		notes = $page.data.notes;
+		notes = page.data.notes;
 
 		let keywords = search.split(" ").filter(keyword => keyword.length > 0);
 		for (const keyword of keywords) {

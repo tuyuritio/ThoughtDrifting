@@ -13,6 +13,5 @@
 	import icons from "@primer/octicons";
 	import "@primer/octicons/build/build.css";
 
-	export let name: keyof typeof icons;
-	export let size: number = 16;
+	let { name, size = 16 }: { name: keyof typeof icons; size?: number } = $props();
 </script>

@@ -314,7 +314,7 @@
 			<a target="_blank" href="https://github.com/tuyuritio"><Icon name="mark-github" size={20} /></a>
 			<a href="mailto:tuyuritio@gmail.com"><Icon name="mail" size={20} /></a>
 			{#if theme}
-				<button on:click={toggle_dark}>
+				<button onclick={toggle_dark}>
 					{#if theme == "dark"}<Icon name="moon" />{:else}<Icon name="sun" />{/if}
 				</button>
 			{/if}
@@ -328,18 +328,18 @@
 			<input id="responsive" type="checkbox" />
 			<nav>
 				<ul class="shadow">
-					<li class:location={$page.url.pathname == "/" || $page.url.pathname.startsWith("/preface")}><a href="/">玄関</a></li>
-					<li class:location={$page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
-					<li class:location={$page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
+					<li class:location={page.url.pathname == "/" || page.url.pathname.startsWith("/preface")}><a href="/">玄関</a></li>
+					<li class:location={page.url.pathname.startsWith("/note")}><a href="/note">文記</a></li>
+					<li class:location={page.url.pathname.startsWith("/info")}><a href="/info">情報</a></li>
 				</ul>
 			</nav>
-			<article><slot /></article>
+			<article>{@render children?.()}</article>
 		</div>
 	</main>
 
 	<footer class="shadow">
 		<cite>
-			<span>&emsp;2024</span>
+			<span>&emsp;2024-2025</span>
 			<a href="/">TuyuriTio</a>
 			<span> | </span>
 			<a target="_blank" href="https://creativecommons.org/licenses/by-nc-nd/4.0/deed.zh-hans">
@@ -363,12 +363,14 @@
 </svelte:head>
 
 <script lang="ts">
-	import { onMount } from "svelte";
-	import { page } from "$app/stores";
+	import { onMount, type Snippet } from "svelte";
+	import { page } from "$app/state";
 	import Icon from "$lib/icon.svelte";
 	import "$lib/style.less";
 
-	let theme: string;
+	let { children }: { children?: Snippet } = $props();
+
+	let theme: string = $state("");
 	function toggle_dark() {
 		theme = document.documentElement.dataset.theme = theme == "dark" ? "light" : "dark";
 		localStorage.setItem("theme", theme);
