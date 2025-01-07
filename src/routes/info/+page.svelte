@@ -142,18 +142,18 @@
 	<article>
 		<div>
 			<h1>○○紹介</h1>
-			<Markdown>{@html $page.data.introduction}</Markdown>
+			<Markdown>{@html page.data.introduction}</Markdown>
 		</div>
 
 		<div>
 			<h1>○○声明</h1>
-			<Markdown>{@html $page.data.claim}</Markdown>
+			<Markdown>{@html page.data.claim}</Markdown>
 		</div>
 	</article>
 
 	<aside>
 		<ul>
-			{#each $page.data.chronicle as day}
+			{#each page.data.chronicle as day}
 				<li>
 					<span>{day.date}</span>
 					<ul>
@@ -172,6 +172,6 @@
 </svelte:head>
 
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Markdown from "$lib/markdown/markdown.svelte";
 </script>

@@ -20,13 +20,13 @@
 
 <main>
 	<h2>{error_code_text.join("·")}</h2>
-	<h3>{$page.error?.message}</h3>
+	<h3>{page.error?.message}</h3>
 </main>
 
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 
-	let error_code: string = $page.status.toString();
+	let error_code: string = page.status.toString();
 	let error_code_text: string[] = [];
 
 	const digits: string[] = ["零", "壹", "贰", "叁", "肆", "伍", "陆", "柒", "捌", "玖"];

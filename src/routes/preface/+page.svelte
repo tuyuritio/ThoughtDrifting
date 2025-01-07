@@ -45,7 +45,7 @@
 <main>
 	<h1>序文歴史</h1>
 	<ul>
-		{#each $page.data.prefaces as preface}
+		{#each page.data.prefaces as preface}
 			<li>
 				<hr />
 				<h2 title={Time.full(preface.timestamp, Time.user_timezone)}>{Time(preface.timestamp)}</h2>
@@ -56,7 +56,7 @@
 </main>
 
 <script>
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Markdown from "$lib/markdown/markdown.svelte";
 	import Time from "$lib/time";
 </script>

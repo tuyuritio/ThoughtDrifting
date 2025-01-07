@@ -196,7 +196,7 @@
 	import Icon from "$lib/icon.svelte";
 	import Time from "$lib/time";
 
-	let notes: any[] = $state(page.data.notes);
+	let notes: any[] = page.data.notes;
 	let list = $derived(((list: any[]) => {
 		let notes: any[] = [];
 		for (const data of list) {

@@ -115,11 +115,11 @@
 		</svg>
 	</header>
 
-	{#if $page.data.time}
+	{#if page.data.time}
 		<hr />
 		<h3>序文</h3>
 		<section>
-			<Markdown>{@html $page.data.content}</Markdown>
+			<Markdown>{@html page.data.content}</Markdown>
 			<a href="/preface">&emsp;&emsp;—— {date}</a>
 		</section>
 	{/if}
@@ -130,9 +130,9 @@
 </svelte:head>
 
 <script lang="ts">
-	import { page } from "$app/stores";
+	import { page } from "$app/state";
 	import Markdown from "$lib/markdown/markdown.svelte";
 
-	let time = new Date($page.data.time);
+	let time = new Date(page.data.time);
 	let date = `${time.getFullYear()} 年 ${time.getMonth() + 1} 月 ${time.getDate()} 日`;
 </script>
